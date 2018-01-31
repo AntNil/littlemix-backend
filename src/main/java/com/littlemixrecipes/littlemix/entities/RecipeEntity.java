@@ -17,6 +17,7 @@ public class RecipeEntity {
 	private String recipeTitle;
 	private String category;
 	private String userName;
+	private String recipeText;
 	
 	@OneToMany( targetEntity = CommentEntity.class, orphanRemoval = true)
 	private List<CommentEntity> commentList;
@@ -52,6 +53,14 @@ public class RecipeEntity {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	
+	public String getRecipeText() {
+		return recipeText;
+	}
+
+	public void setRecipeText(String recipeText) {
+		this.recipeText = recipeText;
 	}
 
 	public List<CommentEntity> getCommentList() {

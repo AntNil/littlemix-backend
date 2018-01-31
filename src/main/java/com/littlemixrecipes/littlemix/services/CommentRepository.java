@@ -1,5 +1,9 @@
 package com.littlemixrecipes.littlemix.services;
 
-public class CommentRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.littlemixrecipes.littlemix.entities.CommentEntity;
+
+public interface CommentRepository extends CrudRepository<CommentEntity, Long> {
 
 }

@@ -1,5 +1,10 @@
 package com.littlemixrecipes.littlemix.services;
 
-public class RecipeRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.littlemixrecipes.littlemix.entities.RecipeEntity;
+
+
+public interface RecipeRepository extends CrudRepository<RecipeEntity, Long> {
 
 }
