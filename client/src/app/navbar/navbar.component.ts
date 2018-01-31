@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+hello: boolean = true;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  bla(){
+    this.hello = false;
   }
 
 }
