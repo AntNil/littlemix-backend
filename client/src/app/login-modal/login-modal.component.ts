@@ -14,7 +14,6 @@ num: number = 0;
 
   bla() {
     console.log("CLicked me! Yes! I LOVE IT!!!");
-    num++;
   }
 
 }
