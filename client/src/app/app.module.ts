@@ -4,16 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MarkustestComponent } from './markustest/markustest.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    MarkustestComponent,
-    LoginFormComponent
+    LoginModalComponent
   ],
   imports: [
     BrowserModule
