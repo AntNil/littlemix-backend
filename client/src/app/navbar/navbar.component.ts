@@ -13,7 +13,8 @@ hello: boolean = true;
   }
 
   bla(){
-    this.hello = false;
+    this.hello = !this.hello;
+    console.log("Loooog");
   }
 
 }
