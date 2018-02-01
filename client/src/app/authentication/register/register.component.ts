@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../models/user.modal";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-register',
@@ -9,10 +10,19 @@ import {User} from "../../models/user.modal";
 export class RegisterComponent implements OnInit {
 
   user: User;
+  name: string;
 
-  constructor() { }
+
+  constructor(private userService: UserService) {
+    this.user = new User();
+  }
 
   ngOnInit() {
   }
+
+  registerUser(){
+    this.userService.saveUserToDatabase(this.user);
+  }
+
 
 }
