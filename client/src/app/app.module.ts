@@ -15,13 +15,10 @@ import { RegisterComponent } from './authentication/register/register.component'
     AppComponent,
     RecipeComponent,
     NavbarComponent,
-<<<<<<< HEAD
     LoginModalComponent,
     RegisterComponent
-=======
-    LoginModalComponent
 
->>>>>>> 5d36c2191ccf5c8d1e9d98d4602c84770bfc7fe0
+
   ],
   imports: [
     BrowserModule,
