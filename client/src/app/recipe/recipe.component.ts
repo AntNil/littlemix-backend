@@ -17,9 +17,9 @@ export class RecipeComponent implements OnInit {
   @Input() itemId: number;
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
 
+
   recipe: Recipe;
   ingredient: Ingredient[];
-
 
 
 
