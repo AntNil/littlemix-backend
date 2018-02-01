@@ -1,10 +1,21 @@
+<!doctype html>
+<html>
+<head>
 
+</head>
 
+<div class="col-lg-6 col-lg-offset-3 text-center">
 <h1>{{recipe.title}}</h1>
-<ul>
-<li *ngFor="let ing of ingredient">{{ing.name}} : {{ing.amount}}</li>
+
+<ul class="list-group list-group-flush">
+<li class="list-group-item" *ngFor="let ing of ingredient">{{ing.name}} : {{ing.amount}}</li>
 </ul>
 <p>{{recipe.description}}</p>
+
+  git checkout master
+</div>
+
+</html>
 
 
 
