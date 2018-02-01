@@ -12,9 +12,13 @@ hello: boolean = true;
   ngOnInit() {
   }
 
-  bla(){
+  bla() {
     this.hello = !this.hello;
     console.log("Loooog");
+  }
+
+  showModal() {
+    $("#myModal").modal('show');
   }
 
 }
