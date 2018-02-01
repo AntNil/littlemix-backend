@@ -4,8 +4,6 @@ import {LoginModalComponent} from "./authentication/login-modal/login-modal.comp
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'}
-
-
 ];
 
 @NgModule({
