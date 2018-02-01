@@ -8,6 +8,9 @@ import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule} from "@angular/forms";
 import { RegisterComponent } from './authentication/register/register.component';
 import { RecipepreviewComponent } from './homepage/recipepreview/recipepreview.component';
+import {UserService} from "./services/user.service";
+import {RecipeService} from "./services/recipe.service";
+
 
 
 
@@ -29,7 +32,7 @@ import { RecipepreviewComponent } from './homepage/recipepreview/recipepreview.c
     AppRoutingModule,
 
   ],
-  providers: [],
+  providers: [UserService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
