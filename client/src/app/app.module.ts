@@ -10,6 +10,7 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { RecipepreviewComponent } from './homepage/recipepreview/recipepreview.component';
 import {UserService} from "./services/user.service";
 import {RecipeService} from "./services/recipe.service";
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 
 
@@ -22,7 +23,8 @@ import {RecipeService} from "./services/recipe.service";
     NavbarComponent,
     LoginModalComponent,
     RegisterComponent,
-    RecipepreviewComponent
+    RecipepreviewComponent,
+    AddRecipeComponent
 
 
   ],

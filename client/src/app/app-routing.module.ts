@@ -3,12 +3,15 @@ import {RouterModule, Routes} from "@angular/router";
 import {LoginModalComponent} from "./authentication/login-modal/login-modal.component";
 import {RegisterComponent} from "./authentication/register/register.component";
 import {RecipeComponent} from "./recipe/recipe.component";
+import {AddRecipeComponent} from "./add-recipe/add-recipe.component";
 
 const appRoutes: Routes = [
 
   {path: '', redirectTo: 'recipe', pathMatch: 'full'},
   {path: 'recipe', component: RecipeComponent},
-  {path: 'registration', component: RegisterComponent}
+  {path: 'registration', component: RegisterComponent},
+  {path: 'newrecipe', component: AddRecipeComponent}
+
 ];
 
 @NgModule({
