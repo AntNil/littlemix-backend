@@ -1,0 +1,43 @@
+.recipeCard {
+  width: 200px;
+  height: 300px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 3px, inset rgba(0,0,0,0.5) 0px -1px 2px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-right: 20px;
+  background-color: white;
+}
+
+.recipeCard img {
+  width: inherit;
+  height: 175px;
+  display: inline;
+  position: absolute;
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.recipeCard h4 {
+  position: absolute;
+  color: #6a6a6a;
+  top: 140px;
+  z-index: 5;
+  padding: 0 10px 0 10px;
+}
+
+.recipeCard .description {
+  position: absolute;
+  color: #6a6a6a;
+  top: 180px;
+  padding: 0 10px 0 10px;
+}
+
+.gradient {
+  position: absolute;
+  width: inherit;
+  height: 40px;
+  top: 140px;
+  background: linear-gradient(to left, transparent, white);
+  z-index: 4;
+}
