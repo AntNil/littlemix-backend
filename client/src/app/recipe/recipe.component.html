@@ -7,10 +7,16 @@
 
 
 </head>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-5">
+    </div>
 
-<div class="col-lg-4 col-lg-offset-6 text-center row">
+<div class="col-6 text-center row">
 <h1>{{recipe.title}}</h1>
-
+  <div class="imgContainer">
+  <img width="300" height="400" src="https://d1doqjmisr497k.cloudfront.net/-/media/schwartz/recipes/800x800/bacon_sandwich_800.ashx?vd=20160802T004146Z&ir=1&width=600&height=600&crop=auto&quality=75&speed=0&hash=E34ACE89265017EAE6FA80D499960D876B388F200" class="img-thumbnail imgRecipe" alt="Cinque Terre">
+  </div>
   <fieldset class="rating text-center">
     <input type="radio"
            value="5"
@@ -43,14 +49,14 @@
   </fieldset>
 
 
-  <ul class="list-group list-group-flush">
+  <ul class="ingredient list-group list-group-flush">
 <li class="list-group-item" *ngFor="let ing of ingredient">{{ing.name}} : {{ing.amount}}</li>
 </ul>
 
   <p>{{recipe.description}}</p>
 
-  <form>
-    <div class="form-group commentBox">
+  <form class="commentBox">
+    <div class="form-group ">
       <label for="exampleInputEmail1">Name</label>
       <input type="email" class="form-control" id="exampleInputEmail1" >
       <div class="form-group">
@@ -62,6 +68,10 @@
   </form>
 
     </div>
+    <div class="col col-lg-5">
+    </div>
+  </div>
+</div>
 
 </html>
 
