@@ -17,9 +17,10 @@ export class RecipeComponent implements OnInit {
   @Input() itemId: number;
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
 
-  recipe: Recipe[];
+
+  recipe: Recipe;
   ingredient: Ingredient[];
-  recipe = new Recipe();
+
 
 
   constructor() {
@@ -28,7 +29,7 @@ export class RecipeComponent implements OnInit {
       new Ingredient('Bread', '1 slice'),
       new Ingredient('Bacon', '2 slices')
     ];
-
+    this.recipe = new Recipe;
     this.recipe.title = 'Title';
     this.recipe.description = 'Work, work, work!';
 
