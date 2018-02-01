@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class CommentEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int commentId;
 	private String commentText;
 	private String userName;

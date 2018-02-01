@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class IngredientsEntity {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int ingredientId;
 	private String ingredientName;
 	private String amount;

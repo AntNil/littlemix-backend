@@ -1,33 +1,33 @@
 package com.littlemixrecipes.littlemix.entities;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class RecipeEntity {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(nullable = false)
 	private int recipeId;
 	private String recipeTitle;
 	private String category;
 	private String userName;
 	private String recipeText;
-	
+
 	@OneToMany( targetEntity = CommentEntity.class, orphanRemoval = true)
 	private List<CommentEntity> commentList;
-	
+
 	@OneToMany( targetEntity = IngredientsEntity.class , orphanRemoval = true)
 	private List<IngredientsEntity> ingredientsList;
-	
+
 	@OneToMany( targetEntity = GradeEntity.class, orphanRemoval = true)
 	private List<GradeEntity> gradeList;
-	
+
 	public RecipeEntity(){ }
 
 	public int getRecipeId() {
@@ -54,7 +54,7 @@ public class RecipeEntity {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
 	public String getRecipeText() {
 		return recipeText;
 	}
@@ -77,8 +77,8 @@ public class RecipeEntity {
 
 	public void setGradeList(List<GradeEntity> gradeList) {
 		this.gradeList = gradeList;
-	}	
-	
+	}
+
 	public List<IngredientsEntity> getIngredientsList() {
 		return ingredientsList;
 	}
@@ -86,7 +86,7 @@ public class RecipeEntity {
 	public void setIngredientsList(List<IngredientsEntity> ingredientsList) {
 		this.ingredientsList = ingredientsList;
 	}
-	
+
 //	public int getAverageGrade() {
 //		int points = 0;
 //		int i;

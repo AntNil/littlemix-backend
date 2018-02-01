@@ -18,20 +18,23 @@ public class LittlemixApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LittlemixApplication.class, args);
 	}
-	
+
 	@Bean
 	public CommandLineRunner demo(RecipeRepository repository) {
 		return (args) -> {
+
 			log.debug("Starting demo");
 			RecipeEntity recipe = new RecipeEntity();
 			recipe.setRecipeTitle("Gurkpizza");
 			recipe.setCategory("Vegetariskt");
 			recipe.setRecipeText("Använd gurka som pizzabotten. Gurka som topping. Och pressad gurka som sås");
 			recipe.setUserName("Anton");
-			
+
 			repository.save(recipe);
 			log.debug("Saved {} to mySQL", recipe);
-			
+
+
 		};
 	}
+
 }

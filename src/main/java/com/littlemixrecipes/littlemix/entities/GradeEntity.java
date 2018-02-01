@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class GradeEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int gradeId;
 	private int gradePoints;
 	private int recipeId;

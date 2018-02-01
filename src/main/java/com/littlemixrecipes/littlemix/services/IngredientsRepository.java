@@ -1,9 +1,9 @@
 package com.littlemixrecipes.littlemix.services;
 
-import org.springframework.data.repository.CrudRepository;
 
 import com.littlemixrecipes.littlemix.entities.IngredientsEntity;
+import org.springframework.data.repository.CrudRepository;
 
-public interface IngredientsRepository extends CrudRepository<IngredientsEntity, Long> {
+public interface IngredientsRepository extends CrudRepository<IngredientsEntity, Integer> {
 
 }
