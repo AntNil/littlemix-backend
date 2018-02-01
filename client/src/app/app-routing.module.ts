@@ -9,7 +9,8 @@ import {LoginModalComponent} from "./authentication/login-modal/login-modal.comp
 const appRoutes: Routes = [
 
   {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'login', component: LoginModalComponent}
+  {path: 'login', component: LoginModalComponent},
+  {path: 'recipe', component: RecipeComponent}
 
 ];
 

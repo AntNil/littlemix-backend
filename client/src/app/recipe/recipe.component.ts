@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Recipe} from "../models/recipe.modal";
 import {Ingredient} from "../models/ingredient.modal";
 
@@ -13,6 +13,10 @@ import {Ingredient} from "../models/ingredient.modal";
 
 
 export class RecipeComponent implements OnInit {
+  @Input() rating: number;
+  @Input() itemId: number;
+  @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
+
   recipe: Recipe[];
   ingredient: Ingredient[];
   recipe = new Recipe();
@@ -20,10 +24,10 @@ export class RecipeComponent implements OnInit {
 
   constructor() {
 
-   this.ingredient = [
-     new Ingredient('Bread', '1 slice'),
-       new Ingredient('Bacon', '2 slices')
-     ];
+    this.ingredient = [
+      new Ingredient('Bread', '1 slice'),
+      new Ingredient('Bacon', '2 slices')
+    ];
 
     this.recipe.title = 'Title';
     this.recipe.description = 'Work, work, work!';
@@ -35,5 +39,13 @@ export class RecipeComponent implements OnInit {
     console.log(this.ingredient);
   }
 
+  onClick(rating: number): void {
+    this.rating = rating;
+    this.ratingClick.emit({
+      itemId: this.itemId,
+      rating: rating
+    });
+
+  }
 }
 
