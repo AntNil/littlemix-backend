@@ -29,7 +29,7 @@ export class RecipeComponent implements OnInit {
       new Ingredient('Bread', '1 slice'),
       new Ingredient('Bacon', '2 slices')
     ];
-    this.recipe= new Recipe;
+    this.recipe = new Recipe;
     this.recipe.title = 'Title';
     this.recipe.description = 'Work, work, work!';
 

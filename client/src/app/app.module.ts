@@ -7,6 +7,7 @@ import { LoginModalComponent } from './authentication/login-modal/login-modal.co
 import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule} from "@angular/forms";
 import { RegisterComponent } from './authentication/register/register.component';
+import { RecipepreviewComponent } from './homepage/recipepreview/recipepreview.component';
 
 
 
@@ -17,7 +18,8 @@ import { RegisterComponent } from './authentication/register/register.component'
     RecipeComponent,
     NavbarComponent,
     LoginModalComponent,
-    RegisterComponent
+    RegisterComponent,
+    RecipepreviewComponent
 
 
   ],

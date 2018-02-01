@@ -1,7 +1,9 @@
 import {Ingredient} from "./ingredient.modal";
-export class Recipe{
+export class Recipe {
 
+  id: number;
   title: string;
-  ingredient: Ingredient
+  imgURL: string;
+  ingredient: Ingredient[];
   description: string;
 }
