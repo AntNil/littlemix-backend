@@ -11,8 +11,7 @@ import javax.persistence.*;
 public class RecipeEntity {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(nullable = false)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int recipeId;
 	private String recipeTitle;
 	private String category;
