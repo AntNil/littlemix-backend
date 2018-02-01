@@ -6,14 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent implements OnInit {
-num: number = 0;
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
   bla() {
-    console.log("CLicked me! Yes! I LOVE IT!!!");
+    console.log("CLicked me! Yes! I LOVE!!!");
   }
 
 }
