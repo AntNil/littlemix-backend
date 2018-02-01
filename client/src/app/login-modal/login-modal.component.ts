@@ -10,10 +10,11 @@ export class LoginModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   bla() {
-    console.log("CLicked me! Yes! I LOVE IT!!!");
+    console.log("CLicked me! Yes! I LOVE!!!");
   }
 
 }
