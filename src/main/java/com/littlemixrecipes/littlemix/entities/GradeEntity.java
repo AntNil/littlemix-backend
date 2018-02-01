@@ -12,6 +12,7 @@ public class GradeEntity {
 	private int gradeId;
 	private int gradePoints;
 	private int recipeId;
+
 	public int getGradeId() {
 		return gradeId;
 	}

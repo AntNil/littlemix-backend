@@ -1,4 +1,4 @@
-package com.littlemixrecipes.littlemix.services;
+package com.littlemixrecipes.littlemix.services.repositories;
 
 
 import com.littlemixrecipes.littlemix.entities.GradeEntity;
