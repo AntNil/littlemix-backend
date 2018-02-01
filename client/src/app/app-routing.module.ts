@@ -1,10 +1,10 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {LoginModalComponent} from "./login-modal/login-modal.component";
+import {LoginModalComponent} from "./authentication/login-modal/login-modal.component";
 
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginModalComponent}
 
 
