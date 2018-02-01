@@ -1,7 +1,5 @@
 package com.littlemixrecipes.littlemix.entities;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.List;
 
@@ -15,8 +13,8 @@ public class RecipeEntity {
 	private int recipeId;
 	private String recipeTitle;
 	private String category;
-	private String userName;
 	private String recipeText;
+	private int userId;
 
 	@OneToMany( targetEntity = CommentEntity.class, orphanRemoval = true)
 	private List<CommentEntity> commentList;
@@ -47,12 +45,6 @@ public class RecipeEntity {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
 
 	public String getRecipeText() {
 		return recipeText;
@@ -60,6 +52,14 @@ public class RecipeEntity {
 
 	public void setRecipeText(String recipeText) {
 		this.recipeText = recipeText;
+	}
+	
+	public int getUserId(){
+		return this.userId;
+	}
+	
+	public void setUserId(int userId){
+		this.userId = userId;
 	}
 
 	public List<CommentEntity> getCommentList() {
@@ -85,13 +85,4 @@ public class RecipeEntity {
 	public void setIngredientsList(List<IngredientsEntity> ingredientsList) {
 		this.ingredientsList = ingredientsList;
 	}
-
-//	public int getAverageGrade() {
-//		int points = 0;
-//		int i;
-//		for (i = 0 ; i < this.gradeList.size(); i++){
-//			points = points + gradeList.get(i).getGradePoints();
-//		}
-//		return points/i;
-//	}
 }

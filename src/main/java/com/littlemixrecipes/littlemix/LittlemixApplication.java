@@ -28,7 +28,6 @@ public class LittlemixApplication {
 			recipe.setRecipeTitle("Gurkpizza");
 			recipe.setCategory("Vegetariskt");
 			recipe.setRecipeText("Använd gurka som pizzabotten. Gurka som topping. Och pressad gurka som sås");
-			recipe.setUserName("Anton");
 
 			repository.save(recipe);
 			log.debug("Saved {} to mySQL", recipe);
