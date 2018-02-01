@@ -41,7 +41,7 @@ public class LittlemixApplication {
 			recipeEntity.setCategory("Vegetariskt");
 			recipeEntity.setRecipeText("Använd gurka som pizzabotten. Gurka som topping. Och pressad gurka som sås");
 			recipeEntity.setRecipeTitle("Gurkpizza");
-			recipeEntity.setUserName("Anton");
+			recipeEntity.setUserId(1);
 
 			IngredientsEntity ingredientsEntity = new IngredientsEntity();
 			ingredientsEntity.setIngredientName("Gurka");
@@ -60,7 +60,6 @@ public class LittlemixApplication {
 			gradeEntity.setGradePoints(5);
 			//fix a way to get id in another way ...
 			gradeEntity.setRecipeId(1);
-
 
 			//Create the differents entities
 			createEntity.createRecipe(recipeRepository, recipeEntity);
