@@ -1,13 +1,9 @@
 package com.littlemixrecipes.littlemix.services;
 
-import com.littlemixrecipes.littlemix.entities.IngredientsEntity;
-import com.littlemixrecipes.littlemix.entities.RecipeEntity;
-import com.littlemixrecipes.littlemix.services.repositories.IngredientsRepository;
-import com.littlemixrecipes.littlemix.services.repositories.RecipeRepository;
+import com.littlemixrecipes.littlemix.entities.*;
+import com.littlemixrecipes.littlemix.services.repositories.*;
 
-/**
- * Created by jennifergisslow on 2018-02-01.
- */
+/*Created by jennifergisslow on 2018-02-01.*/
 public class CreateEntity {
 
     public void createRecipe(RecipeRepository repository, RecipeEntity recipeObject){
@@ -18,9 +14,15 @@ public class CreateEntity {
         repository.save(ingredientsObject);
     }
 
-    public void createComment(){}
+    public void createComment(CommentRepository repository, CommentEntity commentObject){
+        repository.save(commentObject);
+    }
 
-    public void createGrade(){}
+    public void createGrade(GradeRepository repository, GradeEntity gradeObject){
+        repository.save(gradeObject);
+    }
 
-    public void createUser(){}
+    public void createUser(UserRepository repository, UserEntity userObject){
+        repository.save(userObject);
+    }
 }

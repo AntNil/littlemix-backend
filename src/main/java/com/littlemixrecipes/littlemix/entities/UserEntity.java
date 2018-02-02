@@ -15,9 +15,9 @@ public class UserEntity {
 	private int userId;
 	private String firstName;
 	private String lastName;
-	private String userName;
 	private String email;
 	private String password;
+	private String imgURL;
 	
 	@OneToMany( targetEntity = RecipeEntity.class, orphanRemoval = true)
 	private List<RecipeEntity> recipeList;
@@ -48,14 +48,6 @@ public class UserEntity {
 		this.lastName = lastName;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -70,6 +62,14 @@ public class UserEntity {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getImgURL() {
+		return imgURL;
+	}
+
+	public void setImgURL(String imgURL) {
+		this.imgURL = imgURL;
 	}
 
 	public List<RecipeEntity> getRecipeList() {
