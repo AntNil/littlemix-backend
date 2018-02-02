@@ -1,6 +1,6 @@
 package com.littlemixrecipes.littlemix.services;
 
-import com.littlemixrecipes.littlemix.services.repositories.RecipeRepository;
+import com.littlemixrecipes.littlemix.services.repositories.*;
 
 /**
  * Created by jennifergisslow on 2018-02-01.
@@ -11,12 +11,20 @@ public class DeleteEntity {
         repository.delete(recipeId);
     }
 
-    public void deleteIngredients(){}
+    public void deleteIngredients(IngredientsRepository repository, int ingredientsid){
+        repository.delete(ingredientsid);
+    }
 
-    public void deleteComment(){}
+    public void deleteComment(CommentRepository repository, int commentId){
+        repository.delete(commentId);
+    }
 
-    public void deleteGrade(){}
+    public void deleteGrade(GradeRepository repository, int gradeId){
+        repository.delete(gradeId);
+    }
 
-    public void deleteUser(){}
+    public void deleteUser(UserRepository repository, int userId){
+        repository.delete(userId);
+    }
 
 }

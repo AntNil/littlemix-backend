@@ -38,7 +38,7 @@ public class LittlemixApplication {
 			UserEntity userEntity = new UserEntity();
 
 			//All the create's working!
-/*
+
 			//Create user data
 			userEntity.setFirstName("Jennifer");
 			userEntity.setLastName("Gisslow");
@@ -82,7 +82,7 @@ public class LittlemixApplication {
 			createEntity.createComment(commentRepository, commentEntity);
 			createEntity.createGrade(gradeRepository, gradeEntity);
 
-			*/
+
 
 			//All the read by id is working!
 			/*
@@ -126,19 +126,23 @@ public class LittlemixApplication {
 			//Update grade
 
 
-			/*
+/*
 			//Delete user
+			deleteEntity.deleteUser(userRepository, 1);
 
 			//Delete recipe
-			DeleteEntity deleteEntity = new DeleteEntity();
-			deleteEntity.deleteRecipe(repository, 2);
+			deleteEntity.deleteRecipe(recipeRepository, 1);
 
 			//Delete ingredients
+			deleteEntity.deleteIngredients(ingredientsRepository, 1);
 
 			//Delete comment
+			deleteEntity.deleteComment(commentRepository, 1);
 
 			//Delete grade
+			deleteEntity.deleteGrade(gradeRepository, 1);
 			*/
+
 		};
 	}
 
