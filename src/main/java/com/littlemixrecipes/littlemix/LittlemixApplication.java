@@ -23,6 +23,8 @@ public class LittlemixApplication {
 	public CommandLineRunner demo(RecipeRepository recipeRepository, IngredientsRepository ingredientsRepository, CommentRepository commentRepository, GradeRepository gradeRepository, UserRepository userRepository) {
 		return (args) -> {
 
+			//All the create's working!
+/*
 			//Objects
 			CreateEntity createEntity = new CreateEntity();
 			RecipeEntity recipeEntity = new RecipeEntity();
@@ -42,6 +44,8 @@ public class LittlemixApplication {
 			recipeEntity.setCategory("Vegetariskt");
 			recipeEntity.setRecipeText("Använd gurka som pizzabotten. Gurka som topping. Och pressad gurka som sås");
 			recipeEntity.setRecipeTitle("Gurkpizza");
+			recipeEntity.setDescription("Bästa pizzan, EVER!!!!!!");
+			recipeEntity.setImgURL("imgURL ..... YAAAS!");
 			recipeEntity.setUserId(1);
 
 
@@ -71,6 +75,8 @@ public class LittlemixApplication {
 			createEntity.createIngredients(ingredientsRepository, ingredientsEntity);
 			createEntity.createComment(commentRepository, commentEntity);
 			createEntity.createGrade(gradeRepository, gradeEntity);
+
+			*/
 
 /*
 			//Read the different entities
