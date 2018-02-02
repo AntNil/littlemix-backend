@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Recipe} from "../models/recipe.modal";
 import {Ingredient} from "../models/ingredient.modal";
+import {Comment} from "../models/comment.modal";
+import {Rating} from "../models/rating.modal";
 
 @Injectable()
 export class RecipeService {
@@ -46,4 +48,11 @@ export class RecipeService {
     return this.recipes;
   }
 
+  constructor() { }
+  saveCommentToDatabase(comment: Comment) {
+    console.log(comment);
+  }
+  saveCRatingToDatabase(rating: Rating) {
+    console.log(rating);
+  }
 }

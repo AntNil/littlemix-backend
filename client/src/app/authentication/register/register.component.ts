@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/user.modal";
 import {UserService} from "../../services/user.service";
 
@@ -10,7 +10,6 @@ import {UserService} from "../../services/user.service";
 export class RegisterComponent implements OnInit {
 
   user: User;
-  name: string;
 
 
   constructor(private userService: UserService) {
@@ -20,7 +19,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  registerUser(){
+  registerUser() {
     this.userService.saveUserToDatabase(this.user);
   }
 
