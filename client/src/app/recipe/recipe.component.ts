@@ -33,8 +33,8 @@ export class RecipeComponent implements OnInit {
     this.rating = new Rating();
 
     this.ingredient = [
-      new Ingredient('Bread', '1 slice'),
-      new Ingredient('Bacon', '2 slices')
+      new Ingredient(),
+      new Ingredient()
     ];
     this.commentList = [
       {name: "Namn", comment: "Comment"},
@@ -61,6 +61,7 @@ export class RecipeComponent implements OnInit {
     });
   this.recipeService.saveCRatingToDatabase(this.rating);
   }
+
   registerComment(name: string , comment: string){
     console.log(this.comment);
     this.recipeService.saveCommentToDatabase(this.comment);
@@ -68,5 +69,6 @@ export class RecipeComponent implements OnInit {
       {name,comment}
     ]
   }
+
 }
 
