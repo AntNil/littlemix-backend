@@ -11,20 +11,16 @@ import com.littlemixrecipes.littlemix.services.repositories.RecipeRepository;
 public class CreateEntity {
 
     public void createRecipe(RecipeRepository repository, RecipeEntity recipeObject){
-
-        //Useless code?? why have this method than? ........
-/*
-        RecipeEntity recipe = new RecipeEntity();
-        recipe.setRecipeTitle(recipeObject.getRecipeTitle());
-        recipe.setCategory(recipeObject.getCategory());
-        recipe.setRecipeText(recipeObject.getRecipeText());
-        recipe.setUserName(recipeObject.getUserName());
-        */
         repository.save(recipeObject);
-
     }
 
     public void createIngredients(IngredientsRepository repository, IngredientsEntity ingredientsObject){
         repository.save(ingredientsObject);
     }
+
+    public void createComment(){}
+
+    public void createGrade(){}
+
+    public void createUser(){}
 }

@@ -13,11 +13,7 @@ public class RecipeEntity {
 	private int recipeId;
 	private String recipeTitle;
 	private String category;
-	@Column(columnDefinition = "TEXT")
 	private String recipeText;
-	@Column(columnDefinition = "TEXT")
-	private String description;
-	private String imgURL;
 	private int userId;
 
 	@OneToMany( targetEntity = CommentEntity.class, orphanRemoval = true)
@@ -64,22 +60,6 @@ public class RecipeEntity {
 	
 	public void setUserId(int userId){
 		this.userId = userId;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getImgURL() {
-		return imgURL;
-	}
-
-	public void setImgURL(String imgURL) {
-		this.imgURL = imgURL;
 	}
 
 	public List<CommentEntity> getCommentList() {

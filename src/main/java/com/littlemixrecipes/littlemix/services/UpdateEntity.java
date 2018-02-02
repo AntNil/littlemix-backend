@@ -11,4 +11,12 @@ public class UpdateEntity {
     //Fix this later ...
     public void updateRecipe(RecipeRepository repository, RecipeEntity recipe){
     }
+
+    public void updateIngredients(){}
+
+    public void updateComments(){}
+
+    public void updateGrade(){}
+
+    public void updateUser(){}
 }

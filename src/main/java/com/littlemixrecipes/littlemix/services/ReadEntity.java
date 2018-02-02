@@ -1,6 +1,6 @@
 package com.littlemixrecipes.littlemix.services;
 
-import com.littlemixrecipes.littlemix.entities.RecipeEntity;
+import com.littlemixrecipes.littlemix.entities.*;
 import com.littlemixrecipes.littlemix.services.repositories.RecipeRepository;
 
 /**
@@ -13,5 +13,21 @@ public class ReadEntity {
         RecipeEntity recipe = repository.findOne(recipeId);
 
         return recipe;
+    }
+
+    public IngredientsEntity readIngredients(){
+        return null;
+    }
+
+    public CommentEntity readComments(){
+        return null;
+    }
+
+    public GradeEntity readGrade(){
+        return null;
+    }
+
+    public UserEntity readUser(){
+        return null;
     }
 }

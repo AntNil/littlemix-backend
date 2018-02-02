@@ -1,6 +1,5 @@
 package com.littlemixrecipes.littlemix;
 
-<<<<<<< Updated upstream
 import com.littlemixrecipes.littlemix.entities.CommentEntity;
 import com.littlemixrecipes.littlemix.entities.GradeEntity;
 import com.littlemixrecipes.littlemix.entities.IngredientsEntity;
@@ -11,13 +10,6 @@ import com.littlemixrecipes.littlemix.services.ReadEntity;
 import com.littlemixrecipes.littlemix.services.repositories.CommentRepository;
 import com.littlemixrecipes.littlemix.services.repositories.GradeRepository;
 import com.littlemixrecipes.littlemix.services.repositories.IngredientsRepository;
-=======
-import java.util.ArrayList;
-import java.util.List;
-
->>>>>>> Stashed changes
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,8 +21,6 @@ import java.util.Date;
 
 @SpringBootApplication
 public class LittlemixApplication {
-	
-	private static final Logger log = LoggerFactory.getLogger(LittlemixApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(LittlemixApplication.class, args);
@@ -70,7 +60,6 @@ public class LittlemixApplication {
 			//Create the differents entities
 			createEntity.createRecipe(recipeRepository, recipeEntity);
 			createEntity.createIngredients(ingredientsRepository, ingredientsEntity);
-
 
 /*
 			//Read the different entities
