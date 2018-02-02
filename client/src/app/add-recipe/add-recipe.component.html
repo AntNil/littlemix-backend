@@ -1,41 +1,88 @@
 <div class="container">
   <div class="col-lg-10 col-lg-offset-1">
-    <h1>Create Recipe</h1>
+    <h1>Add Recipe</h1>
     <form>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" id="title" [(ngModel)]="user.firstname" name="title" class="form-control" >
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" [(ngModel)]="recipe.title" name="title" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea rows="4" type="text" id="description" [(ngModel)]="recipe.description" name="description"
+                      class="form-control"></textarea>
+          </div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" id="description"  [(ngModel)]="user.lastname" name="description" class="form-control">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="category">
+              <option hidden>Please select a category</option>
+              <option *ngFor="let cat of categories">{{cat}}</option>
+            </select>
+          </div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="category">Category</label>
-        <input type="text" id="category"  [(ngModel)]="user.email" name="category" class="form-control">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="instuctions">Instuctions</label>
+            <textarea rows="4" type="text" id="instuctions" [(ngModel)]="recipe.instruction" name="instuctions"
+                      class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="picture">Image</label>
+            <input type="text" placeholder="Add URL..." id="picture" [(ngModel)]="recipe.imgURL" name="picture"
+                   class="form-control">
+          </div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="instuctions">Instuctions</label>
-        <input type="text" id="instuctions"  [(ngModel)]="user.password" name="instuctions" class="form-control">
+
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="form-group">
+            <label for="ingredients">Ingredients</label>
+            <input type="text" id="ingredients" [(ngModel)]="ingredients.name" name="ingredients" class="form-control">
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="text" id="amount" [(ngModel)]="ingredients.amount" name="amount" class="form-control">
+          </div>
+        </div>
+        <div class="col-lg-1">
+          <button class="btn btn-success pull-right add-ingredient-button" (click)="addIngredient()">Add</button>
+        </div>
       </div>
 
 
-
-      <div class="form-group">
-        <label for="picture">Image</label>
-        <input type="text" placeholder="Add URL..." id="picture"  [(ngModel)]="user.image" name="picture" class="form-control" >
+      <ul class="list-group">
+        <li *ngFor="let ing of recipe.ingredient" class="list-group-item"> {{ing.name}} ({{ing.amount}})</li>
+      </ul>
+      <div class="row">
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-success pull-left add-recipe-button" (click)="addRecipe()">Add Recipe
+          </button>
+        </div>
       </div>
-
-      <div class="form-group">
-        <label for="ingredients">Ingredients</label>
-        <input type="text" id="ingredients"  [(ngModel)]="user.password" name="ingredients" class="form-control">
-      </div>
-
-      <button type="button" class="btn btn-success pull-right" (click)="registerUser()">Register</button>
     </form>
+    <div class="footer"></div>
   </div>
 </div>
+
 
