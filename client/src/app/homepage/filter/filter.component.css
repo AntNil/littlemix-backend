@@ -1,0 +1,16 @@
+.row {
+  background-color: #373737;
+  padding: 20px;
+  width: 980px;
+  display: flex;
+  margin: auto;
+}
+
+input {
+  width: 80%;
+  display: inline-block;
+}
+
+button {
+  vertical-align: top;
+}
