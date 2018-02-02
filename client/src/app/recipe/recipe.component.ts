@@ -3,7 +3,7 @@ import {Recipe} from "../models/recipe.modal";
 import {Ingredient} from "../models/ingredient.modal";
 import {RecipeService} from "../services/recipe.service";
 import {Comment} from "../models/comment.modal";
-import {Rating} from "../models/rating.modal";
+import {Comment}from "../models/comment.modal";
 
 @Component({
 
@@ -15,14 +15,11 @@ import {Rating} from "../models/rating.modal";
 
 
 export class RecipeComponent implements OnInit {
-  @Input() inputRating: number;
-  @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
-
 
   comment: Comment;
   commentList: Comment[];
 
-  rating: Rating;
+
   recipe: Recipe;
   ingredient: Ingredient[];
 
@@ -30,7 +27,6 @@ export class RecipeComponent implements OnInit {
 
   constructor(private recipeService: RecipeService) {
     this.comment = new Comment();
-    this.rating = new Rating();
 
     this.ingredient = [
       new Ingredient(),
@@ -54,14 +50,6 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
 
-  }
-
-  onClick(rating: number): void {
-    this.inputRating = rating;
-    this.ratingClick.emit({
-      rating: rating
-    });
-  this.recipeService.saveCRatingToDatabase(this.rating);
   }
 
   registerComment(name: string , comment: string) {
