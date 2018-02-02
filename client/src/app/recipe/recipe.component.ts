@@ -15,7 +15,7 @@ import {Rating} from "../models/rating.modal";
 
 
 export class RecipeComponent implements OnInit {
-  @Input() rating: number;
+  @Input() inputRating: number;
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
 
 
@@ -57,7 +57,7 @@ export class RecipeComponent implements OnInit {
   }
 
   onClick(rating: number): void {
-    this.rating = rating;
+    this.inputRating = rating;
     this.ratingClick.emit({
       rating: rating
     });
