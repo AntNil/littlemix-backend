@@ -27,7 +27,7 @@ export class AddRecipeComponent implements OnInit {
   }
 
 
-  setCategories(){
+  setCategories() {
     this.categories.push("Dairy", "Vegan", "Meat", "Fish", "Poultry");
 
   }

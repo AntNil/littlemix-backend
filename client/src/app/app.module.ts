@@ -12,6 +12,7 @@ import { HomeComponent } from './homepage/home/home.component';
 import {UserService} from "./services/user.service";
 import {RecipeService} from "./services/recipe.service";
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { FilterComponent } from './homepage/filter/filter.component';
 
 
 
@@ -25,7 +26,8 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     RegisterComponent,
     RecipepreviewComponent,
     HomeComponent,
-    AddRecipeComponent
+    AddRecipeComponent,
+    FilterComponent
 
 
   ],
