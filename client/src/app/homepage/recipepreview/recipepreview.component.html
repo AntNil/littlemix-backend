@@ -1,7 +1,7 @@
-<div class="container centered">
+<div class="wrap">
   <div *ngFor="let recipe of recipes" class="recipeCard">
     <img [src]="recipe.imgURL"/>
-    <h4>{{recipe.title}}</h4>
+    <h2>{{recipe.title}}</h2>
     <p class="description">{{recipe.description}}</p>
     <span class="gradient"></span>
     <ul class="list-group list-group-flush">

@@ -51,11 +51,5 @@ export class RecipeComponent implements OnInit {
     });
 
   }
-  onClick(submitComment: number): void {
-    this.submitComment = submitComment;
-    console.log("yay")
-
-
-  }
 }
 
