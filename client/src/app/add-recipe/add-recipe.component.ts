@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Recipe} from "../models/recipe.modal";
 import {Ingredient} from "../models/ingredient.modal";
+import {RecipeService} from "../services/recipe.service";
 
 @Component({
   selector: 'app-add-recipe',
@@ -13,7 +14,7 @@ export class AddRecipeComponent implements OnInit {
   categories: string [];
   ingredients: Ingredient;
 
-  constructor() {
+  constructor(private recipeService: RecipeService) {
     this.recipe = new Recipe();
     this.categories = new Array();
     this.ingredients = new Ingredient();
@@ -34,12 +35,10 @@ export class AddRecipeComponent implements OnInit {
 
 
   addRecipe() {
-
+    this.recipeService.saveRecipeToDatabase(this.recipe);
   }
 
   addIngredient() {
-console.log(this.ingredients);
-
     this.recipe.ingredient.push(this.ingredients);
     this.ingredients = new Ingredient();
   }

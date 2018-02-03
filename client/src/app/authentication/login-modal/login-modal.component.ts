@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-login-modal',
@@ -7,14 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginModalComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
 
   }
 
-  bla() {
-    console.log("CLicked me! Yes! I LOVE!!!");
+
+  loginPressed(){
+    this.userService.loginWithUser(this.email, this.password);
+
+
   }
 
 }

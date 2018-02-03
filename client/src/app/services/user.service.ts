@@ -9,4 +9,8 @@ export class UserService {
   saveUserToDatabase(user: User) {
     console.log(user);
   }
+
+  loginWithUser(email: string, password: string) {
+    console.log("email = " + email + ", Password = " + password);
+  }
 }

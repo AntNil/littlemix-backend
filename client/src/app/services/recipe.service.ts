@@ -54,4 +54,8 @@ export class RecipeService {
   saveCRatingToDatabase(rating: Rating) {
     console.log(rating);
   }
+
+  saveRecipeToDatabase(recipe: Recipe) {
+    console.log(recipe);
+  }
 }

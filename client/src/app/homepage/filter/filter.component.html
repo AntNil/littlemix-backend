@@ -6,7 +6,7 @@
     </select>
   </div>
     <div class="col-md-4 col-md-offset-4">
-      <input type="text" class="form-control" placeholder="Search">
-      <button type="submit" class="btn"><i class="glyphicon glyphicon-search"></i></button>
+      <input type="text" [(ngModel)]="searchString" name="search" class="form-control" placeholder="Search">
+      <button type="submit" class="btn" (click)="searchButtonPressed()"><i class="glyphicon glyphicon-search"></i></button>
   </div>
 </div>

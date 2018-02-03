@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FilterComponent implements OnInit {
 
   categories: string [];
+  searchString: string;
 
   constructor() {
     this.categories = new Array();
@@ -23,4 +24,7 @@ export class FilterComponent implements OnInit {
     this.categories.push("Dairy", "Vegan", "Meat", "Fish", "Poultry");
   }
 
+  searchButtonPressed() {
+
+  }
 }
