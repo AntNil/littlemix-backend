@@ -16,13 +16,15 @@ export class RecipeService {
            ingredient: [{name: "Eggs", amount: "2"}, ],
            description: "This is a very good recipe. Eat pancakes.",
            category: "Dairy",
-           instruction: "Mix everything well and then fry it in a pan"}
+           instruction: "Mix everything well and then fry it in a pan",
+           rating:[{rating: 3},{rating: 4},{rating: 5}]}
            ,
            {id: 2, userId: 1, title: "Spaghetti", imgURL: "https://elperiodiquito.com/wp-content/uploads/noticias/Pasta-a-la-bolognesa.jpg",
              ingredient: [{name: "Spaghetti", amount: "500g"}, {name: "Ground beef", amount: "500g"}],
              description: "A small taste of Italy",
              category: "Beef",
-             instruction: "You should already know how to do this. Just use your head."}
+             instruction: "You should already know how to do this. Just use your head.",
+             rating:[{rating: 3},{rating: 4},{rating: 5}]}
            ,
           {id: 3, userId: 3, title: "Chicken curry",
             imgURL: "https://www.simplyrecipes.com/wp-content/uploads/2008/05/mango-chicken-curry-horiz-a-1800.jpg",
@@ -33,14 +35,16 @@ export class RecipeService {
             + "I DIDN'T FUCKING HEAR YOU!!!! THEN MAKE THIS FUCKING RECIPES THEN!!",
             category: "Poultry",
             instruction: "Once I was in India and I got this really big box" +
-            "filled with curry so now I put a lot of curry into everything and it is great."}
+            "filled with curry so now I put a lot of curry into everything and it is great.",
+            rating:[{rating: 3},{rating: 4},{rating: 5}]}
             ,
           {id: 4, userId: 1, title: "Black pudding",
             imgURL: "http://3.bp.blogspot.com/-ybxvrJLwjQA/UPGKc3gRDXI/AAAAAAAAEqU/67poMCWLVnI/s640/IMG_4340.JPG",
             ingredient: [{name: "Spaghetti", amount: "500g"}, {name: "Ground beef", amount: "500g"}],
             description: "A small taste of blood",
             category: "Blood",
-            instruction: "Just tap the nearest living thing of blood and you're good to go! Mix well and fry in a pan."}
+            instruction: "Just tap the nearest living thing of blood and you're good to go! Mix well and fry in a pan.",
+            rating:[{rating: 3},{rating: 4},{rating: 5}]}
       ];
   }
 

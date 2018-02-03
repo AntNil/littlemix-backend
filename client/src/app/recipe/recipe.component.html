@@ -8,9 +8,9 @@
 
 
     <div class="col-6 text-center row">
-      <h1>{{recipe.title}}</h1>
+      <h1>{{recipes[1].title}}</h1>
       <div class="imgContainer">
-        <img width="300" height="400" src={{recipe.imgURL}} class="img-thumbnail imgRecipe" alt="Cinque Terre">
+        <img width="300" height="400" src={{recipes[1].imgURL}} class="img-thumbnail imgRecipe" alt="Cinque Terre">
       </div>
 
      <app-rating></app-rating>
@@ -19,7 +19,7 @@
         <li *ngFor="let ing of ingredient" class="list-group-item">{{ing.name}} : {{ing.amount}}</li>
       </ul>
 
-      <p>{{recipe.description}}</p>
+      <p>{{recipes[1].description}}</p>
 
       <form  class="commentBox">
 
@@ -35,6 +35,7 @@
         <button   (click)="registerComment(nameInput.value, commentInput.value )" type="button" class="btn btn-primary btn-sm">Submit</button>
 
       </form>
+      <label>User Comment</label>
       <ul class="ingredient list-group list-group-flush">
         <li *ngFor="let com of commentList" class="list-group-item">{{com.name}} : {{com.comment}}</li>
       </ul>

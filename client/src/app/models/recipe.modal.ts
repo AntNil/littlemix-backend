@@ -1,4 +1,6 @@
 import {Ingredient} from "./ingredient.modal";
+import {Rating} from "./rating.modal";
+
 export class Recipe {
 
   id: number;
@@ -9,6 +11,7 @@ export class Recipe {
   ingredient: Ingredient[];
   description: string;
   instruction: string;
+  rating: Rating[];
 
   constructor() {
   }
