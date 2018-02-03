@@ -18,7 +18,6 @@
   height: 400px;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 3px, inset rgba(0,0,0,0.5) 0px -1px 2px;
-  border-radius: 20px;
   display: inline-block;
   background-color: white;
   overflow: hidden;
@@ -30,7 +29,6 @@
   display: inline;
   position: absolute;
   z-index: 1;
-  border-radius: 20px;
 }
 
 .recipeCard h2 {
@@ -54,5 +52,14 @@
   height: 80px;
   top: 175px;
   background: linear-gradient(to left, transparent, white);
+  z-index: 4;
+}
+
+.gradient-bottom {
+  position: absolute;
+  width: inherit;
+  height: 100px;
+  top: 300px;
+  background: linear-gradient(to bottom, transparent, white);
   z-index: 4;
 }
