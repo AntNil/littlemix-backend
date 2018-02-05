@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.littlemixrecipes.littlemix.entities.UserEntity;
 import com.littlemixrecipes.littlemix.services.UserRepository;
-import com.littlemixrecipes.littlemix.webmodels.User;
 
 @Controller
 @RequestMapping(path="/user")
