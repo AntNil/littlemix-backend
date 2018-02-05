@@ -4,6 +4,7 @@ import {Ingredient} from "../models/ingredient.modal";
 import {RecipeService} from "../services/recipe.service";
 import {Comment} from "../models/comment.modal";
 import {Rating} from "../models/rating.modal";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
 
@@ -14,7 +15,7 @@ import {Rating} from "../models/rating.modal";
 
 export class RecipeComponent implements OnInit {
   @Input() comment: Comment;
-  @Input() recipeId: number;
+  recipeId: number;
   commentList: Comment[];
 
   recipe: Recipe;
@@ -24,9 +25,10 @@ export class RecipeComponent implements OnInit {
 
 
 
-  constructor( private recipeService: RecipeService) {
-    //this.recipeId = recipeId;
-   // console.log(recipeId);
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService) {
+    this.route.params.subscribe(params => {
+      this.recipeId = params['recipeId'];
+    });
     this.comment = new Comment();
     this.commentList = [
       {name: "Namn", comment: "Comment"},
@@ -36,10 +38,7 @@ export class RecipeComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.getRecipes();
-    this.getIngredient();
-    this.getRating();
-
+    this.getRecipe(this.recipeId);
   }
 
   registerComment(name: string , comment: string) {
@@ -55,7 +54,7 @@ export class RecipeComponent implements OnInit {
 
   private getRecipe(recipeId: number)
   {
-    this.recipe = this.recipeService.getRecipe(this.recipeId);
+    this.recipe = this.recipeService.getRecipe(recipeId);
   }
   private getIngredient(): void {
     this.ingredient = this.recipeService.recipes[this.recipeId].ingredient;

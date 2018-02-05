@@ -36,7 +36,7 @@ export class RecipeService {
       {
         id: 3, userId: 3, title: "Chicken curry",
         imgURL: "https://www.simplyrecipes.com/wp-content/uploads/2008/05/mango-chicken-curry-horiz-a-1800.jpg",
-        ingredient: [{name: "Spaghetti", amount: "500g"}, {name: "Ground beef", amount: "500g"}],
+        ingredient: [{name: "Chicken", amount: "500g"}, {name: "Curry", amount: "500g"}],
         description: "I hope you like curry because, guuurl, you'll be having a lot of it. Some people "
         + "really love curry, and I am one of those people. 500g of curry is fucking NOTHING!! I could eat "
         + "like an entire bathtub of curry all at once. That's how badass I am. Are you that badass? What?? "
@@ -75,7 +75,12 @@ export class RecipeService {
     console.log(recipe);
   }
 
-  getRecipe(recipeId: number) {
-
+  getRecipe(recipeId: number) : Recipe {
+    for(let i = 0; i < this.recipes.length; i++)
+    {
+      if(this.recipes[i].id == recipeId){
+        return this.recipes[i];
+      }
+    }
   }
 }

@@ -8,18 +8,18 @@
 
 
     <div class="col-6 text-center row">
-      <h1>{{recipes[1].title}}</h1>
+      <h1>{{recipe.title}}</h1>
       <div class="imgContainer">
-        <img width="300" height="400" src={{recipes[1].imgURL}} class="img-thumbnail imgRecipe" alt="Cinque Terre">
+        <img width="300" height="400" src={{recipe.imgURL}} class="img-thumbnail imgRecipe" alt="Cinque Terre">
       </div>
 
      <app-rating></app-rating>
 
     <ul class="ingredient list-group list-group-flush">
-        <li *ngFor="let ing of ingredient" class="list-group-item">{{ing.name}} : {{ing.amount}}</li>
+        <li *ngFor="let ing of recipe.ingredient" class="list-group-item">{{ing.name}} : {{ing.amount}}</li>
       </ul>
 
-      <p>{{recipes[1].description}}</p>
+      <p>{{recipe.description}}</p>
 
       <form  class="commentBox">
 
