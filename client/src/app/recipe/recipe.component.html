@@ -1,6 +1,3 @@
-
-
-
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col col-lg-5">
@@ -13,7 +10,7 @@
         <img width="300" height="400" src={{recipe.imgURL}} class="img-thumbnail imgRecipe" alt="Cinque Terre">
       </div>
 
-     <app-rating recipeId={{recipe.id}}></app-rating>
+     <app-rating [recipe]="recipe"></app-rating>
 
       <p>{{recipe.description}}</p>
       <ul class="ingredient list-group list-group-flush">
