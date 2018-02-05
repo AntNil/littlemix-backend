@@ -15,11 +15,14 @@
 
      <app-rating></app-rating>
 
-    <ul class="ingredient list-group list-group-flush">
+      <p>{{recipe.description}}</p>
+      <ul class="ingredient list-group list-group-flush">
         <li *ngFor="let ing of recipe.ingredient" class="list-group-item">{{ing.name}} : {{ing.amount}}</li>
       </ul>
 
-      <p>{{recipe.description}}</p>
+      <p>{{recipe.instruction}}</p>
+
+      <a routerLink="/recipe/edit/{{recipe.id}}"><span class="glyphicon glyphicon-edit"></span></a>
 
       <form  class="commentBox">
 
