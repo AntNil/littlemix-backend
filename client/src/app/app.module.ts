@@ -12,7 +12,7 @@ import { HomeComponent } from './homepage/home/home.component';
 import {UserService} from "./services/user.service";
 import {RecipeService} from "./services/recipe.service";
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
-
+import {HttpClientModule} from "@angular/common/http";
 import { FilterComponent } from './homepage/filter/filter.component';
 
 import { RatingComponent } from './rating/rating.component';
@@ -40,7 +40,7 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-
+    HttpClientModule,
   ],
   providers: [UserService, RecipeService],
   bootstrap: [AppComponent]
