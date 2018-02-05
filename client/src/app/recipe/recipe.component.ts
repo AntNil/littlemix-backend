@@ -1,31 +1,30 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Recipe} from "../models/recipe.modal";
 import {Ingredient} from "../models/ingredient.modal";
 import {RecipeService} from "../services/recipe.service";
 import {Comment} from "../models/comment.modal";
 import {Rating} from "../models/rating.modal";
 import {ActivatedRoute} from "@angular/router";
+import {RatingComponent} from '../rating/rating.component';
 
 @Component({
 
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.css']
+  styleUrls: ['./recipe.component.css'],
+  directives: RatingComponent
 })
 
 export class RecipeComponent implements OnInit {
   @Input() comment: Comment;
   recipeId: number;
   commentList: Comment[];
-
   recipe: Recipe;
-  recipes: Recipe[];
-  ingredient: Ingredient[];
-  rating: Rating;
+
+ // @ViewChild(RatingComponent) alert: RatingComponent;
 
 
-
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService) {
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService ) {
     this.route.params.subscribe(params => {
       this.recipeId = params['recipeId'];
     });
@@ -35,7 +34,6 @@ export class RecipeComponent implements OnInit {
     ];
 
     this.comment = new Comment();
-
   }
   ngOnInit() {
     this.getRecipe(this.recipeId);
@@ -48,19 +46,24 @@ export class RecipeComponent implements OnInit {
       {name, comment}
     ];
   }
-  private getRecipes(): void {
-    this.recipes = this.recipeService.recipes;
-  }
-
   private getRecipe(recipeId: number)
   {
     this.recipe = this.recipeService.getRecipe(recipeId);
   }
+
+
+
+
+/*  private getRecipes(): void {
+    this.recipes = this.recipeService.recipes;
+  }
+
+
   private getIngredient(): void {
     this.ingredient = this.recipeService.recipes[this.recipeId].ingredient;
   }
   private getRating(): void {
     this.rating = this.recipeService.recipes[this.recipeId].rating;
-  }
+  }*/
 }
 
