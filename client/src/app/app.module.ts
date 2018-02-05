@@ -17,6 +17,7 @@ import { FilterComponent } from './homepage/filter/filter.component';
 
 import { RatingComponent } from './rating/rating.component';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 

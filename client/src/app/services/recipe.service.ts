@@ -4,6 +4,7 @@ import {Recipe} from "../models/recipe.modal";
 import {Ingredient} from "../models/ingredient.modal";
 import {Comment} from "../models/comment.modal";
 import {Rating} from "../models/rating.modal";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class RecipeService {
@@ -11,7 +12,6 @@ export class RecipeService {
   recipes: Recipe[];
 
   constructor(private http:HttpClient) {
-
     this.recipes = [
       {
         id: 1, userId: 2, title: "Pancakes", imgURL: "https://i.ytimg.com/vi/7ebZWviUfUA/maxresdefault.jpg",
