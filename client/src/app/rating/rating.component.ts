@@ -1,7 +1,11 @@
 import {Component, EventEmitter, Input, NgModule, OnInit, Output} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {Rating}from "../models/rating.modal";
+import {Recipe}from "../models/recipe.modal";
 import {RecipeService} from "../services/recipe.service";
+import Events = NodeJS.Events;
+
+
 
 @Component({
   selector: 'app-rating',
@@ -10,14 +14,17 @@ import {RecipeService} from "../services/recipe.service";
 })
 export class RatingComponent implements OnInit {
   @Input() inputrating: number;
+  @Input() recipeId: number;
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
   rating: Rating;
+  recipe:  Recipe;
 
 
 
   constructor(private recipeService: RecipeService) {
-    this.rating = new Rating();
-    this.setRatingValue(4);
+    console.log(this.recipeId);
+    this.rating = this.recipe.rating;
+    //this.setRatingValue(4);
 
 
   }
@@ -39,9 +46,8 @@ export class RatingComponent implements OnInit {
     })
 
   }
-  private getRating(): void {
-
-    this.rating = this.recipeService.recipes[1].rating;
+  public getRating(recipeId: number): void {
+    this.rating = this.recipeService.recipes[recipeId].rating;
   }
 
 }
