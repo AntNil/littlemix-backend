@@ -1,3 +1,4 @@
+import {Favorite} from "./favorite.modal";
 export class User{
 
 
@@ -7,6 +8,7 @@ export class User{
    email: string;
    password: string;
    image: string;
+   favorite: Favorite;
 
 
 
