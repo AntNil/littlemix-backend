@@ -1,9 +1,12 @@
 package com.littlemixrecipes.littlemix.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,7 +23,6 @@ public class UserController {
 	@PostMapping(path="/create")
 	public void createUser(@RequestParam User userModel){
 		UserEntity user = new UserEntity();
-		CreateEntity create = new CreateEntity();
 		
 		user.setFirstName(userModel.getFirstName());
 		user.setLastName(userModel.getLastName());
@@ -28,12 +30,25 @@ public class UserController {
 		user.setPassword(userModel.getPassword());
 		user.setImgURL(userModel.getUrlImg());
 		
-		create.createUser(userRepository, user);
+		userRepository.save(user);
 	}
 	
 	@GetMapping(path="/getUser")
 	public UserEntity getUser(int userId){
-		ReadEntity read = new ReadEntity();
-		return read.readUser(userRepository, userId);
+		return userRepository.findOne(userId);
+	}
+	
+	@PutMapping(path="/update")
+	public ResponseEntity<UserEntity> updateUser(@RequestParam UserEntity userModel){
+		int currentUserId = userModel.getUserId();
+		
+		UserEntity oldUser = userRepository.findOne(currentUserId);
+		if(oldUser == null){
+            return new ResponseEntity<UserEntity>(HttpStatus.NOT_FOUND);
+		}
+		oldUser = userModel;
+		userRepository.save(oldUser);
+		
+		return new ResponseEntity<UserEntity>(oldUser, HttpStatus.OK);
 	}
 }

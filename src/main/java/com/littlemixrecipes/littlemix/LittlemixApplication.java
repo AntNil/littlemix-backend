@@ -1,8 +1,7 @@
 package com.littlemixrecipes.littlemix;
 
-import com.littlemixrecipes.littlemix.services.*;
-import com.littlemixrecipes.littlemix.services.repositories.*;
 
+import com.littlemixrecipes.littlemix.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
