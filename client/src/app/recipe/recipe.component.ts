@@ -14,15 +14,19 @@ import {Rating} from "../models/rating.modal";
 
 export class RecipeComponent implements OnInit {
   @Input() comment: Comment;
+  @Input() recipeId: number;
   commentList: Comment[];
 
+  recipe: Recipe;
   recipes: Recipe[];
   ingredient: Ingredient[];
   rating: Rating;
 
 
 
-  constructor(private recipeService: RecipeService) {
+  constructor( private recipeService: RecipeService) {
+    //this.recipeId = recipeId;
+   // console.log(recipeId);
     this.comment = new Comment();
     this.commentList = [
       {name: "Namn", comment: "Comment"},
@@ -48,11 +52,16 @@ export class RecipeComponent implements OnInit {
   private getRecipes(): void {
     this.recipes = this.recipeService.recipes;
   }
+
+  private getRecipe(recipeId: number)
+  {
+    this.recipe = this.recipeService.getRecipe(this.recipeId);
+  }
   private getIngredient(): void {
-    this.ingredient = this.recipeService.recipes[1].ingredient;
+    this.ingredient = this.recipeService.recipes[this.recipeId].ingredient;
   }
   private getRating(): void {
-    this.rating = this.recipeService.recipes[1].rating;
+    this.rating = this.recipeService.recipes[this.recipeId].rating;
   }
 }
 
