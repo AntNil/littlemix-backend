@@ -1,5 +1,7 @@
 package com.littlemixrecipes.littlemix.services;
 
+import java.util.List;
+
 import com.littlemixrecipes.littlemix.entities.*;
 import com.littlemixrecipes.littlemix.services.repositories.*;
 
@@ -33,5 +35,9 @@ public class ReadEntity {
     public UserEntity readUser(UserRepository repository, int userId){
         UserEntity userEntity = repository.findOne(userId);
         return userEntity;
+    }
+    
+    public List<RecipeEntity> getAllRecipes(RecipeRepository repository){
+    	return (List<RecipeEntity>) repository.findAll();
     }
 }

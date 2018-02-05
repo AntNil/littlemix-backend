@@ -1,17 +1,22 @@
 package com.littlemixrecipes.littlemix;
 
+import com.littlemixrecipes.littlemix.controllers.RecipeController;
 import com.littlemixrecipes.littlemix.entities.*;
 import com.littlemixrecipes.littlemix.services.CreateEntity;
 import com.littlemixrecipes.littlemix.services.DeleteEntity;
 import com.littlemixrecipes.littlemix.services.ReadEntity;
 import com.littlemixrecipes.littlemix.services.UpdateEntity;
 import com.littlemixrecipes.littlemix.services.repositories.*;
+import com.littlemixrecipes.littlemix.webmodels.Recipe;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @SpringBootApplication
 public class LittlemixApplication {
@@ -59,7 +64,7 @@ public class LittlemixApplication {
 			ingredientsEntity.setIngredientName("Gurka");
 			ingredientsEntity.setAmount("4 st");
 			//fix a way to get id in another way ...
-			ingredientsEntity.setRecipeId(1);
+			ingredientsEntity.setRecipeId(51);
 
 
 			//Create comment data
@@ -76,11 +81,12 @@ public class LittlemixApplication {
 			gradeEntity.setRecipeId(1);
 
 			//Create the differents entities
-			createEntity.createUser(userRepository, userEntity);
-			createEntity.createRecipe(recipeRepository, recipeEntity);
-			createEntity.createIngredients(ingredientsRepository, ingredientsEntity);
-			createEntity.createComment(commentRepository, commentEntity);
-			createEntity.createGrade(gradeRepository, gradeEntity);
+//			createEntity.createUser(userRepository, userEntity);
+//			createEntity.createRecipe(recipeRepository, recipeEntity);
+//			createEntity.createIngredients(ingredientsRepository, ingredientsEntity);
+//			createEntity.createComment(commentRepository, commentEntity);
+//			createEntity.createGrade(gradeRepository, gradeEntity);
+			
 
 
 
