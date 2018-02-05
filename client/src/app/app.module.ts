@@ -16,6 +16,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { FilterComponent } from './homepage/filter/filter.component';
 
 import { RatingComponent } from './rating/rating.component';
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 
 
 
@@ -32,7 +33,8 @@ import { RatingComponent } from './rating/rating.component';
     HomeComponent,
     AddRecipeComponent,
     FilterComponent,
-    RatingComponent
+    RatingComponent,
+    EditRecipeComponent
   ],
   imports: [
     BrowserModule,
