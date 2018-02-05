@@ -3,7 +3,6 @@ import {Recipe} from "../models/recipe.modal";
 import {Ingredient} from "../models/ingredient.modal";
 import {RecipeService} from "../services/recipe.service";
 import {Comment} from "../models/comment.modal";
-import {Comment}from "../models/comment.modal";
 import {Rating} from "../models/rating.modal";
 
 @Component({
@@ -19,12 +18,12 @@ export class RecipeComponent implements OnInit {
 
   recipes: Recipe[];
   ingredient: Ingredient[];
-  rating: Rating[];
+  rating: Rating;
 
 
 
   constructor(private recipeService: RecipeService) {
-    this.comment = new Comment();
+
     this.commentList = [
       {name: "Namn", comment: "Comment"},
     ];
@@ -36,6 +35,7 @@ export class RecipeComponent implements OnInit {
     this.getRecipes();
     this.getIngredient();
     this.getRating();
+
   }
 
   registerComment(name: string , comment: string) {

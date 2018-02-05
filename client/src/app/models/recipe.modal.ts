@@ -11,7 +11,7 @@ export class Recipe {
   ingredient: Ingredient[];
   description: string;
   instruction: string;
-  rating: Rating[];
+  rating: Rating;
 
   constructor() {
   }
