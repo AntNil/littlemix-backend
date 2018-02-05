@@ -1,16 +1,18 @@
 <div class="wrap">
   <div class="grid-container">
     <div *ngFor="let recipe of recipes">
-      <div class="recipeCard">
-        <img [src]="recipe.imgURL"/>
-        <h2>{{recipe.title}}</h2>
-        <p class="description">{{recipe.description}}</p>
-        <span class="gradient"></span>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let ing of ingredient">{{ing.name}} : {{ing.amount}}</li>
-        </ul>
-        <div class="gradient-bottom"></div>
-      </div>
+      <a href="/recipe/{{recipe.id}}">
+        <div class="recipeCard">
+          <img [src]="recipe.imgURL"/>
+          <h2>{{recipe.title}}</h2>
+          <p class="description">{{recipe.description}}</p>
+          <span class="gradient"></span>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let ing of ingredient">{{ing.name}} : {{ing.amount}}</li>
+          </ul>
+          <div class="gradient-bottom"></div>
+        </div>
+      </a>
     </div>
   </div>
 </div>

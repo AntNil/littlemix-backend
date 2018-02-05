@@ -74,4 +74,8 @@ export class RecipeService {
   saveRecipeToDatabase(recipe: Recipe) {
     console.log(recipe);
   }
+
+  getRecipe(recipeId: number) {
+
+  }
 }
