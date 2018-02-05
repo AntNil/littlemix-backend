@@ -57,6 +57,7 @@ export class RecipeService {
         instruction: "Just tap the nearest living thing of blood and you're good to go! Mix well and fry in a pan.",
         rating: {rating: 2}
       }];
+    this.findAll();
   }
 
 
@@ -87,8 +88,24 @@ export class RecipeService {
 
   public findAll()
   {
-    this.http.get('localhost:8080/recipe/getAllRecipes').subscribe(data => {
-      console.log(data);
+    this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
+        let inRecipes = data as Array<Object>;
+        let outRecipes = new Array<Recipe>();
+        for(var i = 0; i < inRecipes.length; i++)
+        {
+          console.log(data[i]);
+          var recipe = new Recipe();
+          recipe.id = data[i].recipeId;
+          recipe.title = data[i].recipeTitle;
+          recipe.category = data[i].category;
+          recipe.userId = data[i].userId;
+          recipe.description = data[i].description;
+          recipe.imgURL = data[i].imgURL;
+          recipe.instruction = data[i].recipeText;
+          recipe.rating = {rating: 5};
+          recipe.ingredient = new Array<Ingredient>();
+          this.recipes.push(recipe);
+        }
     });
 
   }
