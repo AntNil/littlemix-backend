@@ -21,16 +21,8 @@ public class UserController {
 	private UserRepository userRepository;
 	
 	@PostMapping(path="/create")
-	public void createUser(@RequestParam User userModel){
-		UserEntity user = new UserEntity();
-		
-		user.setFirstName(userModel.getFirstName());
-		user.setLastName(userModel.getLastName());
-		user.setEmail(userModel.getEmail());
-		user.setPassword(userModel.getPassword());
-		user.setImgURL(userModel.getUrlImg());
-		
-		userRepository.save(user);
+	public void createUser(@RequestParam UserEntity userModel){
+		userRepository.save(userModel);
 	}
 	
 	@GetMapping(path="/getUser")

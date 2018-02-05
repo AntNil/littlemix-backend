@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.littlemixrecipes.littlemix.entities.RecipeEntity;
-import com.littlemixrecipes.littlemix.webmodels.Recipe;
 
 @Controller
 @RequestMapping(path="/recipe")
@@ -28,18 +27,8 @@ public class RecipeController {
 	int currentRecipeId;
 	
 	@PostMapping(path="/create")
-	public void createRecipe(@RequestParam Recipe recipeModel) {	
-		RecipeEntity recipe = new RecipeEntity();
-		
-		//copy recipe webmodel and save it to the database as a RecipeEntity
-		recipe.setRecipeTitle(recipeModel.getTitle());
-		recipe.setCategory(recipeModel.getCategory());
-		recipe.setUserId(recipeModel.getUserId());
-		recipe.setRecipeText(recipeModel.getInstruction());
-		recipe.setDescription(recipeModel.getDescription());
-		recipe.setImgURL(recipeModel.getImgURL());
-		recipe.setIngredientsList(recipeModel.getIngredientsList());
-		recipeRepository.save(recipe);
+	public void createRecipe(@RequestParam RecipeEntity recipeModel) {	
+		recipeRepository.save(recipeModel);
 	}
 	
 	@GetMapping(path="/getRecipe")
