@@ -20,13 +20,13 @@ public class RecipeEntity {
 	private String imgURL;
 	private int userId;
 
-	@OneToMany( targetEntity = CommentEntity.class, orphanRemoval = true)
+	@OneToMany( targetEntity = CommentEntity.class, orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<CommentEntity> commentList;
 
-	@OneToMany( targetEntity = IngredientsEntity.class , orphanRemoval = true)
+	@OneToMany( targetEntity = IngredientsEntity.class, orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<IngredientsEntity> ingredientsList;
 
-	@OneToMany( targetEntity = GradeEntity.class, orphanRemoval = true)
+	@OneToMany( targetEntity = GradeEntity.class, orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<GradeEntity> gradeList;
 
 	public RecipeEntity(){ }
