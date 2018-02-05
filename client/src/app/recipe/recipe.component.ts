@@ -13,7 +13,7 @@ import {Rating} from "../models/rating.modal";
 })
 
 export class RecipeComponent implements OnInit {
-  comment: Comment;
+  @Input() comment: Comment;
   commentList: Comment[];
 
   recipes: Recipe[];
@@ -23,7 +23,7 @@ export class RecipeComponent implements OnInit {
 
 
   constructor(private recipeService: RecipeService) {
-
+    this.comment = new Comment();
     this.commentList = [
       {name: "Namn", comment: "Comment"},
     ];
