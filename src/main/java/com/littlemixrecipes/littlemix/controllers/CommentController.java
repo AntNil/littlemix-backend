@@ -1,7 +1,7 @@
 package com.littlemixrecipes.littlemix.controllers;
 
 import com.littlemixrecipes.littlemix.entities.CommentEntity;
-import com.littlemixrecipes.littlemix.services.repositories.CommentRepository;
+import com.littlemixrecipes.littlemix.services.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

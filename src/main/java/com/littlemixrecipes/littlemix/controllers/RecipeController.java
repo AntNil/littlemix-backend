@@ -3,11 +3,7 @@ package com.littlemixrecipes.littlemix.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.littlemixrecipes.littlemix.services.CreateEntity;
-import com.littlemixrecipes.littlemix.services.ReadEntity;
-import com.littlemixrecipes.littlemix.services.repositories.IngredientsRepository;
-import com.littlemixrecipes.littlemix.services.repositories.RecipeRepository;
-import com.littlemixrecipes.littlemix.services.repositories.UserRepository;
+import com.littlemixrecipes.littlemix.services.RecipeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.littlemixrecipes.littlemix.entities.IngredientsEntity;
 import com.littlemixrecipes.littlemix.entities.RecipeEntity;
-import com.littlemixrecipes.littlemix.entities.UserEntity;
 import com.littlemixrecipes.littlemix.webmodels.Recipe;
 
 @Controller

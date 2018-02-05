@@ -1,22 +1,12 @@
 package com.littlemixrecipes.littlemix;
 
-import com.littlemixrecipes.littlemix.controllers.RecipeController;
-import com.littlemixrecipes.littlemix.entities.*;
-import com.littlemixrecipes.littlemix.services.CreateEntity;
-import com.littlemixrecipes.littlemix.services.DeleteEntity;
-import com.littlemixrecipes.littlemix.services.ReadEntity;
-import com.littlemixrecipes.littlemix.services.UpdateEntity;
+import com.littlemixrecipes.littlemix.services.*;
 import com.littlemixrecipes.littlemix.services.repositories.*;
-import com.littlemixrecipes.littlemix.webmodels.Recipe;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @SpringBootApplication
 public class LittlemixApplication {
@@ -28,7 +18,7 @@ public class LittlemixApplication {
 	@Bean
 	public CommandLineRunner demo(RecipeRepository recipeRepository, IngredientsRepository ingredientsRepository, CommentRepository commentRepository, GradeRepository gradeRepository, UserRepository userRepository) {
 		return (args) -> {
-
+/*
 
 			//Objects
 			CreateEntity createEntity = new CreateEntity();

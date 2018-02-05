@@ -3,13 +3,12 @@ package com.littlemixrecipes.littlemix.controllers;
 /*Created by jennifergisslow on 2018-02-04.*/
 
 import com.littlemixrecipes.littlemix.entities.GradeEntity;
-import com.littlemixrecipes.littlemix.services.repositories.GradeRepository;
+import com.littlemixrecipes.littlemix.services.GradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

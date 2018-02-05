@@ -1,4 +1,4 @@
-package com.littlemixrecipes.littlemix.services.repositories;
+package com.littlemixrecipes.littlemix.services;
 
 import org.springframework.data.repository.CrudRepository;
 

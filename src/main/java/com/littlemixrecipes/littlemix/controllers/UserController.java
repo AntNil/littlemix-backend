@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.littlemixrecipes.littlemix.entities.UserEntity;
-import com.littlemixrecipes.littlemix.services.CreateEntity;
-import com.littlemixrecipes.littlemix.services.ReadEntity;
-import com.littlemixrecipes.littlemix.services.repositories.UserRepository;
+import com.littlemixrecipes.littlemix.services.UserRepository;
 import com.littlemixrecipes.littlemix.webmodels.User;
 
 @Controller
