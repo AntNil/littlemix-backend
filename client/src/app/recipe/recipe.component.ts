@@ -28,7 +28,7 @@ export class RecipeComponent implements OnInit {
       {name: "Namn", comment: "Comment"},
     ];
 
-
+    this.comment = new Comment();
 
   }
   ngOnInit() {
