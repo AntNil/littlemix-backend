@@ -16,18 +16,23 @@ public class GradeEntity {
 	public int getGradeId() {
 		return gradeId;
 	}
+
 	public void setGradeId(int gradeId) {
 		this.gradeId = gradeId;
 	}
+
 	public int getGradePoints() {
 		return gradePoints;
 	}
+
 	public void setGradePoints(int gradePoints) {
 		this.gradePoints = gradePoints;
 	}
+
 	public int getRecipeId() {
 		return recipeId;
 	}
+
 	public void setRecipeId(int recipeId) {
 		this.recipeId = recipeId;
 	}

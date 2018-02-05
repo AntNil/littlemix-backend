@@ -21,8 +21,11 @@ public class UserEntity {
 	private String password;
 	private String imgURL;
 	
-	@OneToMany( targetEntity = RecipeEntity.class, orphanRemoval = true)
+	@OneToMany( targetEntity = RecipeEntity.class, orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<RecipeEntity> recipeList;
+
+	@OneToMany(targetEntity = RecipeEntity.class, orphanRemoval = true, cascade = CascadeType.ALL)
+	private List<RecipeEntity> favoriteRecipeList;
 	
 	public UserEntity(){ }
 
@@ -80,5 +83,13 @@ public class UserEntity {
 
 	public void setRecipeList(List<RecipeEntity> recipeList) {
 		this.recipeList = recipeList;
+	}
+
+	public List<RecipeEntity> getFavoriteRecipeList() {
+		return favoriteRecipeList;
+	}
+
+	public void setFavoriteRecipeList(List<RecipeEntity> favoriteRecipeList) {
+		this.favoriteRecipeList = favoriteRecipeList;
 	}
 }
