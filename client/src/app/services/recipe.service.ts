@@ -121,4 +121,10 @@ export class RecipeService {
     });
 
   }
+
+  removeRecipe(recipe: Recipe) {
+    this.http.delete('http://localhost:8080/recipe/delete?recipeId=' + recipe.recipeId).subscribe(data => {
+      console.log(data);
+    });
+  }
 }

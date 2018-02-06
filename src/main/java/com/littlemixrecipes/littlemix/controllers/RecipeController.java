@@ -72,7 +72,8 @@ public class RecipeController {
 	
 	@DeleteMapping(path="/delete")
 	public ResponseEntity deleteRecipe(@RequestParam int recipeId){
-		recipeRepository.delete(recipeId);
+		RecipeEntity r = recipeRepository.findOne(recipeId);
+		recipeRepository.delete(r);
 		return new ResponseEntity(HttpStatus.OK);
 	}
 	
