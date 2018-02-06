@@ -55,6 +55,7 @@ export class RecipeService {
         category: "Blood",
         instruction: "Just tap the nearest living thing of blood and you're good to go! Mix well and fry in a pan.",
         rating: {rating: 2}
+
       }];
   }
 

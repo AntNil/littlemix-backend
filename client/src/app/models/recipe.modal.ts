@@ -13,6 +13,7 @@ export class Recipe {
   instruction: string;
   rating: Rating;
 
+
   constructor() {
   }
 }

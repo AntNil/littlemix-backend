@@ -14,7 +14,7 @@ import Events = NodeJS.Events;
 })
 export class RatingComponent implements OnInit {
   @Input() inputrating: number;
-  @Input() recipeId: number;
+
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
   rating: Rating;
   recipe:  Recipe;
@@ -22,8 +22,8 @@ export class RatingComponent implements OnInit {
 
 
   constructor(private recipeService: RecipeService) {
-    console.log(this.recipeId);
-    this.rating = this.recipe.rating;
+
+    //.rating = this.recipe.rating;
     //this.setRatingValue(4);
 
 
