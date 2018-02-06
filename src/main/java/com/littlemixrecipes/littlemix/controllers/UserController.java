@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,17 +21,22 @@ public class UserController {
 	private UserRepository userRepository;
 	
 	@PostMapping(path="/create")
-	public void createUser(@RequestParam UserEntity userModel){
+	public ResponseEntity createUser(@RequestBody UserEntity userModel){
 		userRepository.save(userModel);
+		return new ResponseEntity(HttpStatus.OK);
 	}
 	
 	@GetMapping(path="/getUser")
-	public UserEntity getUser(int userId){
-		return userRepository.findOne(userId);
+	public ResponseEntity<UserEntity> getUser(int userId){
+		UserEntity user = userRepository.findOne(userId);
+		if(user == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<UserEntity>(user, HttpStatus.OK);
 	}
 	
 	@PutMapping(path="/update")
-	public ResponseEntity<UserEntity> updateUser(@RequestParam UserEntity userModel){
+	public ResponseEntity<UserEntity> updateUser(@RequestBody UserEntity userModel){
 		int currentUserId = userModel.getUserId();
 		
 		UserEntity oldUser = userRepository.findOne(currentUserId);

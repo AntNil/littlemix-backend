@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,8 +28,9 @@ public class RecipeController {
 	int currentRecipeId;
 	
 	@PostMapping(path="/create")
-	public void createRecipe(@RequestParam RecipeEntity recipeModel) {	
+	public ResponseEntity createRecipe(@RequestBody RecipeEntity recipeModel) {	
 		recipeRepository.save(recipeModel);
+		return new ResponseEntity(HttpStatus.OK);
 	}
 	
 	@GetMapping(path="/getRecipe")
@@ -53,7 +55,7 @@ public class RecipeController {
 	}
 	
 	@PutMapping(path="/update")
-	public ResponseEntity<RecipeEntity> updateRecipe(@RequestParam RecipeEntity recipeModel){
+	public ResponseEntity<RecipeEntity> updateRecipe(@RequestBody RecipeEntity recipeModel){
 		int currentRecipeId = recipeModel.getRecipeId();
 		
 		RecipeEntity oldRecipe = recipeRepository.findOne(currentRecipeId);
@@ -67,8 +69,9 @@ public class RecipeController {
 	}
 	
 	@DeleteMapping(path="/delete")
-	public void deleteRecipe(@RequestParam int recipeId){
+	public ResponseEntity deleteRecipe(@RequestParam int recipeId){
 		recipeRepository.delete(recipeId);
+		return new ResponseEntity(HttpStatus.OK);
 	}
 	
 	@GetMapping(path="/getByCategory")
