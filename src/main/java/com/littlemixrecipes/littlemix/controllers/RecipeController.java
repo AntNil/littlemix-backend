@@ -30,7 +30,7 @@ public class RecipeController {
 	int currentRecipeId;
 	
 	@PostMapping(path="/create")
-	public ResponseEntity createRecipe(@RequestBody RecipeEntity recipeModel) {	
+	public ResponseEntity createRecipe(@RequestBody RecipeEntity recipeModel) {
 		recipeRepository.save(recipeModel);
 		return new ResponseEntity(HttpStatus.OK);
 	}

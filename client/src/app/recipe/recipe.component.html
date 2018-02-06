@@ -5,7 +5,7 @@
 
 
     <div class="col-6 text-center row">
-      <h1>{{recipe.title}}</h1>
+      <h1>{{recipe.recipeTitle}}</h1>
       <div class="imgContainer">
         <img width="300" height="400" src={{recipe.imgURL}} class="img-thumbnail imgRecipe" alt="Cinque Terre">
       </div>
@@ -18,12 +18,12 @@
 
       <p>{{recipe.description}}</p>
       <ul class="ingredient list-group list-group-flush">
-        <li *ngFor="let ing of recipe.ingredient" class="list-group-item">{{ing.name}} : {{ing.amount}}</li>
+        <li *ngFor="let ing of recipe.ingredientsList" class="list-group-item">{{ing.ingredientName}} : {{ing.amount}}</li>
       </ul>
 
-      <p>{{recipe.instruction}}</p>
+      <p>{{recipe.recipeText}}</p>
 
-      <a routerLink="/recipe/edit/{{recipe.id}}"><span class="glyphicon glyphicon-edit"></span></a>
+      <a routerLink="/recipe/edit/{{recipe.recipeId}}"><span class="glyphicon glyphicon-edit"></span></a>
 
       <form  class="commentBox">
 

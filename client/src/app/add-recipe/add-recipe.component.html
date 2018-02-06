@@ -56,7 +56,7 @@
         <div class="col-lg-8">
           <div class="form-group">
             <label for="ingredients">Ingredients</label>
-            <input type="text" id="ingredients" [(ngModel)]="ingredients.name" name="ingredients" class="form-control">
+            <input type="text" id="ingredients" [(ngModel)]="ingredients.ingredientName" name="ingredients" class="form-control">
           </div>
         </div>
         <div class="col-lg-3">
@@ -72,7 +72,7 @@
 
 
       <ul class="list-group">
-        <li *ngFor="let ing of recipe.ingredientsList" class="list-group-item"> {{ing.name}} ({{ing.amount}})</li>
+        <li *ngFor="let ing of recipe.ingredientsList" class="list-group-item"> {{ing.ingredientName}} ({{ing.amount}})</li>
       </ul>
       <div class="row">
         <div class="col-lg-12">
