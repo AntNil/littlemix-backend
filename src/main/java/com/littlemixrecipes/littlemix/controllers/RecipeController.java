@@ -9,17 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.littlemixrecipes.littlemix.entities.RecipeEntity;
-import com.littlemixrecipes.littlemix.webmodels.Recipe;
 
 @Controller
+@CrossOrigin
 @RequestMapping(path="/recipe")
 public class RecipeController {
 	@Autowired
@@ -28,32 +23,29 @@ public class RecipeController {
 	int currentRecipeId;
 	
 	@PostMapping(path="/create")
-	public void createRecipe(@RequestParam Recipe recipeModel) {	
-		RecipeEntity recipe = new RecipeEntity();
-		
-		//copy recipe webmodel and save it to the database as a RecipeEntity
-		recipe.setRecipeTitle(recipeModel.getTitle());
-		recipe.setCategory(recipeModel.getCategory());
-		recipe.setUserId(recipeModel.getUserId());
-		recipe.setRecipeText(recipeModel.getInstruction());
-		recipe.setDescription(recipeModel.getDescription());
-		recipe.setImgURL(recipeModel.getImgURL());
-		recipe.setIngredientsList(recipeModel.getIngredientsList());
-		recipeRepository.save(recipe);
+	public void createRecipe(@RequestParam RecipeEntity recipeModel) {	
+		recipeRepository.save(recipeModel);
 	}
 	
 	@GetMapping(path="/getRecipe")
-	public RecipeEntity getRecipe(int recipeId ){
-		return recipeRepository.findOne(recipeId);
+	public ResponseEntity<RecipeEntity> getRecipe(@RequestParam int recipeId ){
+		RecipeEntity recipe = recipeRepository.findOne(recipeId);
+		if (recipe == null){
+			return new ResponseEntity<RecipeEntity>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<RecipeEntity>(recipe, HttpStatus.OK);
 	}
 	
 	@GetMapping(path="/getAllRecipesWithUserId")
-	public List<RecipeEntity> getAllRecipesWithUserId(String userId) {
+	public ResponseEntity<List<RecipeEntity>> getAllRecipesWithUserId(@RequestParam int userId) {
 		List<RecipeEntity> recipeList = new ArrayList();
+		if(recipeRepository.findRecipeWithUserId(userId) == null){
+			return new ResponseEntity<List<RecipeEntity>>(HttpStatus.NOT_FOUND);
+		}
 		recipeRepository.findAll().forEach(e ->{
 			recipeList.add(e);
 		});
-		return recipeList;
+		return new ResponseEntity<List<RecipeEntity>>(recipeList, HttpStatus.OK);
 	}
 	
 	@PutMapping(path="/update")
@@ -76,7 +68,25 @@ public class RecipeController {
 	}
 	
 	@GetMapping(path="/getByCategory")
-	public List<RecipeEntity> getRecipesByCategory(@RequestParam String category){
-		return recipeRepository.findRecipeByCategory(category);
+	public ResponseEntity<List<RecipeEntity>> getRecipesByCategory(@RequestParam String category){
+		 List<RecipeEntity> recipeList = recipeRepository.findRecipeByCategory(category);
+		 if( recipeList == null){
+			 return new ResponseEntity<List<RecipeEntity>>(HttpStatus.NOT_FOUND);
+		 }
+		return new ResponseEntity<List<RecipeEntity>>(recipeList, HttpStatus.OK);
+	}
+	
+	@GetMapping(path="/getAllRecipes")
+	public ResponseEntity<List<RecipeEntity>> getAllRecipes() {
+		List<RecipeEntity> recipeList = new ArrayList();
+		
+		if (recipeRepository.findAll() == null){
+			return new ResponseEntity<List<RecipeEntity>>(HttpStatus.NOT_FOUND);
+		}
+		
+		recipeRepository.findAll().forEach(e ->{
+			recipeList.add(e);
+		});
+		return new ResponseEntity<List<RecipeEntity>>(recipeList, HttpStatus.OK);
 	}
 }

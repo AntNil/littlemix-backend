@@ -12,12 +12,11 @@ import {RatingComponent} from '../rating/rating.component';
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.css'],
-  directives: RatingComponent
 })
 
 export class RecipeComponent implements OnInit {
   @Input() comment: Comment;
-  recipeId: number;
+  @Output() recipeId: number;
   commentList: Comment[];
   recipe: Recipe;
 
@@ -32,6 +31,8 @@ export class RecipeComponent implements OnInit {
     this.commentList = [
       {name: "Namn", comment: "Comment"},
     ];
+    console.log(this.recipeId + " from parent class");
+
 
     this.comment = new Comment();
   }

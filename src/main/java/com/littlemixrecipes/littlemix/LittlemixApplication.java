@@ -1,7 +1,15 @@
 package com.littlemixrecipes.littlemix;
 
 
+import com.littlemixrecipes.littlemix.entities.CommentEntity;
+import com.littlemixrecipes.littlemix.entities.GradeEntity;
+import com.littlemixrecipes.littlemix.entities.IngredientsEntity;
+import com.littlemixrecipes.littlemix.entities.RecipeEntity;
+import com.littlemixrecipes.littlemix.entities.UserEntity;
 import com.littlemixrecipes.littlemix.services.*;
+
+import java.util.Date;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,11 +28,6 @@ public class LittlemixApplication {
 /*
 
 			//Objects
-			CreateEntity createEntity = new CreateEntity();
-			ReadEntity readEntity = new ReadEntity();
-			DeleteEntity deleteEntity = new DeleteEntity();
-			UpdateEntity updateEntity = new UpdateEntity();
-
 			RecipeEntity recipeEntity = new RecipeEntity();
 			IngredientsEntity ingredientsEntity = new IngredientsEntity();
 			CommentEntity commentEntity = new CommentEntity();
@@ -71,7 +74,7 @@ public class LittlemixApplication {
 
 			//Create the differents entities
 //			createEntity.createUser(userRepository, userEntity);
-//			createEntity.createRecipe(recipeRepository, recipeEntity);
+//			recipeRepository.save(recipeEntity);
 //			createEntity.createIngredients(ingredientsRepository, ingredientsEntity);
 //			createEntity.createComment(commentRepository, commentEntity);
 //			createEntity.createGrade(gradeRepository, gradeEntity);

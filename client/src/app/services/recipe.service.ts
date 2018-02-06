@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import {Recipe} from "../models/recipe.modal";
 import {Ingredient} from "../models/ingredient.modal";
 import {Comment} from "../models/comment.modal";
 import {Rating} from "../models/rating.modal";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class RecipeService {
 
   recipes: Recipe[];
 
-  constructor() {
-
+  constructor(private http:HttpClient) {
     this.recipes = [
       {
         id: 1, userId: 2, title: "Pancakes", imgURL: "https://i.ytimg.com/vi/7ebZWviUfUA/maxresdefault.jpg",
@@ -57,6 +58,7 @@ export class RecipeService {
         rating: {rating: 2}
 
       }];
+    this.findAll();
   }
 
 
@@ -83,5 +85,29 @@ export class RecipeService {
         return this.recipes[i];
       }
     }
+  }
+
+  public findAll()
+  {
+    this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
+        let inRecipes = data as Array<Object>;
+        let outRecipes = new Array<Recipe>();
+        for(var i = 0; i < inRecipes.length; i++)
+        {
+          console.log(data[i]);
+          var recipe = new Recipe();
+          recipe.id = data[i].recipeId;
+          recipe.title = data[i].recipeTitle;
+          recipe.category = data[i].category;
+          recipe.userId = data[i].userId;
+          recipe.description = data[i].description;
+          recipe.imgURL = data[i].imgURL;
+          recipe.instruction = data[i].recipeText;
+          recipe.rating = {rating: 5};
+          recipe.ingredient = new Array<Ingredient>();
+          this.recipes.push(recipe);
+        }
+    });
+
   }
 }
