@@ -1,6 +1,6 @@
 export class Ingredient{
 
-  name: string;
+  ingredientName: string;
   amount: string;
 
 }

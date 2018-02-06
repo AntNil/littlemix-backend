@@ -30,7 +30,7 @@ public class RecipeController {
 	int currentRecipeId;
 	
 	@PostMapping(path="/create")
-	public ResponseEntity createRecipe(@RequestBody RecipeEntity recipeModel) {	
+	public ResponseEntity createRecipe(@RequestBody RecipeEntity recipeModel) {
 		recipeRepository.save(recipeModel);
 		return new ResponseEntity(HttpStatus.OK);
 	}
@@ -72,7 +72,8 @@ public class RecipeController {
 	
 	@DeleteMapping(path="/delete")
 	public ResponseEntity deleteRecipe(@RequestParam int recipeId){
-		recipeRepository.delete(recipeId);
+		RecipeEntity r = recipeRepository.findOne(recipeId);
+		recipeRepository.delete(r);
 		return new ResponseEntity(HttpStatus.OK);
 	}
 	

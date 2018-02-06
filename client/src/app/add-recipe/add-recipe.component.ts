@@ -39,6 +39,7 @@ export class AddRecipeComponent implements OnInit {
   }
 
   addIngredient() {
+    console.log(this.ingredients);
     this.recipe.ingredientsList.push(this.ingredients);
     this.ingredients = new Ingredient();
   }

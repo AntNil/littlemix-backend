@@ -46,4 +46,8 @@ export class EditRecipeComponent implements OnInit {
     let ingredient = this.recipe.ingredientsList[i];
     this.recipe.ingredientsList = this.recipe.ingredientsList.filter(obj => obj !== ingredient);
   }
+
+  removeRecipe() {
+    this.recipeService.removeRecipe(this.recipe);
+  }
 }
