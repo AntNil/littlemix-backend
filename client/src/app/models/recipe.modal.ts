@@ -15,6 +15,7 @@ export class Recipe {
   ingredientsList: Ingredient[];
   gradeList: Rating;
 
+
   constructor() {
   }
 }

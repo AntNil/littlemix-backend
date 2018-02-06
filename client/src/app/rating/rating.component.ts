@@ -12,6 +12,7 @@ import {RecipeService} from "../services/recipe.service";
 })
 export class RatingComponent implements OnInit {
   @Input() inputrating: number;
+
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
   rating: Rating;
   @Input() recipe: Recipe;
@@ -19,6 +20,12 @@ export class RatingComponent implements OnInit {
 
 
   constructor(private recipeService: RecipeService) {
+
+
+    //.rating = this.recipe.rating;
+    //this.setRatingValue(4);
+
+
   }
 
   ngOnInit() {
