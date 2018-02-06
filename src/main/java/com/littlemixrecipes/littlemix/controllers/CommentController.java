@@ -16,12 +16,8 @@ import java.util.List;
 @RequestMapping("/comment")
 public class CommentController {
 
-    private final CommentRepository commentRepository;
-
     @Autowired
-    public CommentController(CommentRepository commentRepository) {
-        this.commentRepository = commentRepository;
-    }
+    private CommentRepository commentRepository;
 
     @Transactional(readOnly = true)
     @GetMapping("/getComments")
