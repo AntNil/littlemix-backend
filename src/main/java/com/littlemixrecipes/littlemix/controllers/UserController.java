@@ -48,4 +48,9 @@ public class UserController {
 		
 		return new ResponseEntity<UserEntity>(oldUser, HttpStatus.OK);
 	}
+
+	@PostMapping("/addFavorite")
+	public void createAFavorite(@RequestParam int recipeId){
+		userRepository.addToFavorite(recipeId);
+	}
 }
