@@ -1,10 +1,10 @@
 <div class="wrap">
   <div class="grid-container">
     <div *ngFor="let recipe of recipes">
-      <a routerLink="/recipe/{{recipe.id}}">
+      <a routerLink="/recipe/{{recipe.recipeId}}">
         <div class="recipeCard">
           <img [src]="recipe.imgURL"/>
-          <h2>{{recipe.title}}</h2>
+          <h2>{{recipe.recipeTitle}}</h2>
           <p class="description">{{recipe.description}}</p>
           <span class="gradient"></span>
           <ul class="list-group list-group-flush">
