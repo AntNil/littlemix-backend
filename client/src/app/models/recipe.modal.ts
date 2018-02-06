@@ -1,17 +1,20 @@
 import {Ingredient} from "./ingredient.modal";
+import {Comment} from "./comment.modal";
 import {Rating} from "./rating.modal";
 
 export class Recipe {
 
-  id: number;
-  userId: number;
-  title: string;
+  recipeId: number;
+  recipeTitle: string;
   category: string;
-  imgURL: string;
-  ingredient: Ingredient[];
+  recipeText: string;
   description: string;
-  instruction: string;
-  rating: Rating;
+  imgURL: string;
+  userId: number;
+  commentList: Comment[];
+  ingredientsList: Ingredient[];
+  gradeList: Rating;
+
 
   constructor() {
   }

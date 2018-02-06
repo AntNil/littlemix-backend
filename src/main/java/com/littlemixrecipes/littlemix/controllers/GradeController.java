@@ -15,12 +15,8 @@ import java.util.List;
 @RequestMapping("/grade")
 public class GradeController {
 
-    private final GradeRepository gradeRepository;
-
     @Autowired
-    public GradeController(GradeRepository gradeRepository){
-        this.gradeRepository = gradeRepository;
-    }
+    private GradeRepository gradeRepository;
 
     @GetMapping("/getGrade")
     public double getFinalGradeOnRecipie(@RequestParam int recipeId){

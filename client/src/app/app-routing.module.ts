@@ -15,6 +15,7 @@ const appRoutes: Routes = [
   {path: 'registration', component: RegisterComponent},
   {path: 'newrecipe', component: AddRecipeComponent}
 
+
 ];
 
 @NgModule({

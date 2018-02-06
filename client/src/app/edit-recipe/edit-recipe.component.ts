@@ -37,13 +37,13 @@ export class EditRecipeComponent implements OnInit {
   }
 
   addIngredient() {
-    this.recipe.ingredient.push(this.ingredients);
+    this.recipe.ingredientsList.push(this.ingredients);
     this.ingredients = new Ingredient();
   }
 
   removeIngredient(i: number) {
     console.log("Trying to remove at index " + i);
-    let ingredient = this.recipe.ingredient[i];
-    this.recipe.ingredient = this.recipe.ingredient.filter(obj => obj !== ingredient);
+    let ingredient = this.recipe.ingredientsList[i];
+    this.recipe.ingredientsList = this.recipe.ingredientsList.filter(obj => obj !== ingredient);
   }
 }
