@@ -27,10 +27,7 @@ export class RecipeComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.recipeId = params['recipeId'];
     });
-    this.comment = new Comment();
-    this.commentList = [
-      {name: "Namn", comment: "Comment"},
-    ];
+
     console.log(this.recipeId + " from parent class");
 
 
@@ -43,10 +40,9 @@ export class RecipeComponent implements OnInit {
   registerComment(name: string , comment: string) {
     console.log(this.comment);
     this.recipeService.saveCommentToDatabase(this.comment);
-    this.commentList = [
-      {name, comment}
-    ];
+    this.commentList.push( {name, comment});
   }
+
   private getRecipe(recipeId: number)
   {
     this.recipe = this.recipeService.getRecipe(recipeId);
