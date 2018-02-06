@@ -18,7 +18,7 @@ export class AddRecipeComponent implements OnInit {
     this.recipe = new Recipe();
     this.categories = new Array();
     this.ingredients = new Ingredient();
-    this.recipe.ingredient = new Array();
+    this.recipe.ingredientsList = new Array();
 
   }
 
@@ -39,7 +39,7 @@ export class AddRecipeComponent implements OnInit {
   }
 
   addIngredient() {
-    this.recipe.ingredient.push(this.ingredients);
+    this.recipe.ingredientsList.push(this.ingredients);
     this.ingredients = new Ingredient();
   }
 }
