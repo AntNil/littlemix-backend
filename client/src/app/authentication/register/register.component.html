@@ -4,12 +4,12 @@
   <form>
     <div class="form-group">
       <label for="name">Firstname</label>
-      <input type="text" id="name" [(ngModel)]="user.firstname" name="first" class="form-control" >
+      <input type="text" id="name" [(ngModel)]="user.firstName" name="first" class="form-control" >
     </div>
 
     <div class="form-group">
       <label for="lastname">Lastname</label>
-      <input type="text" id="lastname"  [(ngModel)]="user.lastname" name="lname" class="form-control">
+      <input type="text" id="lastname"  [(ngModel)]="user.lastName" name="lname" class="form-control">
     </div>
 
     <div class="form-group">
@@ -24,7 +24,7 @@
 
     <div class="form-group">
       <label for="picture">Image</label>
-      <input type="text" placeholder="Add URL..." id="picture"  [(ngModel)]="user.image" name="picture" class="form-control" >
+      <input type="text" placeholder="Add URL..." id="picture"  [(ngModel)]="user.imgURL" name="picture" class="form-control" >
     </div>
 
     <button type="button" class="btn btn-success pull-right" (click)="registerUser()">Register</button>
