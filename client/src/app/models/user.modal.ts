@@ -2,15 +2,13 @@ import {Favorite} from "./favorite.modal";
 export class User{
 
 
-   id: number;
-   firstname: string;
-   lastname: string;
+   userId: number;
+   firstName: string;
+   lastName: string;
    email: string;
    password: string;
-   image: string;
-   favorite: Favorite;
-
-
+   imgURL: string;
+/*   favorite: Favorite;*/
 
   constructor(){
   }

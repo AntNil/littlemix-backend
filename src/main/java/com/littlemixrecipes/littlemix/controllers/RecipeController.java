@@ -61,7 +61,7 @@ public class RecipeController {
 		});
 		return new ResponseEntity<List<RecipeEntity>>(recipeList, HttpStatus.OK);
 	}
-	
+
 	@PutMapping(path="/update")
 	public ResponseEntity<RecipeEntity> updateRecipe(@RequestBody RecipeEntity recipeModel){
 		int currentRecipeId = recipeModel.getRecipeId();
@@ -100,9 +100,29 @@ public class RecipeController {
 			return new ResponseEntity<List<RecipeEntity>>(HttpStatus.NOT_FOUND);
 		}
 		
-		recipeRepository.findAll().forEach(e ->{
+		recipeRepository.findAll().forEach(e -> {
 			recipeList.add(e);
 		});
 		return new ResponseEntity<List<RecipeEntity>>(recipeList, HttpStatus.OK);
+	}
+	
+	@PostMapping(path="/addFavorite")
+	public ResponseEntity addFavorite(@RequestParam int userId, @RequestParam int recipeId){
+		UserEntity user = userRepository.findOne(userId);
+		RecipeEntity recipe = recipeRepository.findOne(recipeId);
+		user.getFavoriteRecipeList().add(recipe);
+		userRepository.save(user);
+		
+		return new ResponseEntity(HttpStatus.OK);
+	}
+	
+	@DeleteMapping(path="/deleteFavorite")
+	public ResponseEntity deleteFavorite(@RequestParam int userId, @RequestParam int recipeId){
+		UserEntity user = userRepository.findOne(userId);
+		int i;
+		for( RecipeEntity recipe : user.getFavoriteRecipeList()){
+			
+		}
+		return new ResponseEntity(HttpStatus.OK);
 	}
 }

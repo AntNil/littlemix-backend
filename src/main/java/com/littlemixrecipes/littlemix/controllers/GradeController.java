@@ -3,7 +3,10 @@ package com.littlemixrecipes.littlemix.controllers;
 /*Created by jennifergisslow on 2018-02-04.*/
 
 import com.littlemixrecipes.littlemix.entities.GradeEntity;
+import com.littlemixrecipes.littlemix.entities.RecipeEntity;
 import com.littlemixrecipes.littlemix.services.GradeRepository;
+import com.littlemixrecipes.littlemix.services.RecipeRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +20,7 @@ public class GradeController {
 
     @Autowired
     private GradeRepository gradeRepository;
+    @Autowired RecipeRepository recipeRepository;
 
     @GetMapping("/getGrade")
     public double getFinalGradeOnRecipie(@RequestParam int recipeId){
@@ -33,8 +37,11 @@ public class GradeController {
     }
 
     @PostMapping("/createGrade")
-    public GradeEntity createAGrade(@RequestBody GradeEntity gradeObject){
-        return gradeRepository.save(gradeObject);
+    public ResponseEntity createAGrade(@RequestBody GradeEntity gradeObject){
+    	RecipeEntity recipe = recipeRepository.findOne(gradeObject.getRecipeId());
+    	recipe.getGradeList().add(gradeObject);
+    	recipeRepository.save(recipe);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping("/updateGrade")
