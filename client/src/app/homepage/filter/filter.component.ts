@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RecipeService} from "../../services/recipe.service";
 
 @Component({
   selector: 'app-filter',
@@ -8,11 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class FilterComponent implements OnInit {
 
   categories: string [];
-  searchString: string;
-  selectedCategory: string;
-  category: string;
 
-  constructor() {
+  constructor(private recipeService: RecipeService) {
     this.categories = new Array();
   }
 
@@ -30,7 +28,7 @@ export class FilterComponent implements OnInit {
 
   }
   select(value){
-
+this.recipeService.findPerCategory(value);
 
 }
 }
