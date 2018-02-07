@@ -15,7 +15,7 @@ export class RecipeService {
     this.recipes = [
       {
         recipeId: 1, userId: 2, recipeTitle: "Pancakes", imgURL: "https://i.ytimg.com/vi/7ebZWviUfUA/maxresdefault.jpg",
-        ingredientsList: [{name: "Eggs", amount: "2"},],
+        ingredientsList: [{ingredientName: "Eggs", amount: "2"},],
         description: "This is a very good recipe. Eat pancakes.",
         category: "Dairy",
         recipeText: "Mix everything well and then fry it in a pan",
@@ -28,7 +28,7 @@ export class RecipeService {
         userId: 1,
         recipeTitle: "Spaghetti",
         imgURL: "https://elperiodiquito.com/wp-content/uploads/noticias/Pasta-a-la-bolognesa.jpg",
-        ingredientsList: [{name: "Spaghetti", amount: "500g"}, {name: "Ground beef", amount: "500g"}],
+        ingredientsList: [{ingredientName: "Spaghetti", amount: "500g"}, {ingredientName: "Ground beef", amount: "500g"}],
         description: "A small taste of Italy",
         category: "Beef",
         recipeText: "You should already know how to do this. Just use your head.",
@@ -39,7 +39,7 @@ export class RecipeService {
       {
         recipeId: 3, userId: 3, recipeTitle: "Chicken curry",
         imgURL: "https://www.simplyrecipes.com/wp-content/uploads/2008/05/mango-chicken-curry-horiz-a-1800.jpg",
-        ingredientsList: [{name: "Chicken", amount: "500g"}, {name: "Curry", amount: "500g"}],
+        ingredientsList: [{ingredientName: "Chicken", amount: "500g"}, {ingredientName: "Curry", amount: "500g"}],
         description: "I hope you like curry because, guuurl, you'll be having a lot of it. Some people "
         + "really love curry, and I am one of those people. 500g of curry is fucking NOTHING!! I could eat "
         + "like an entire bathtub of curry all at once. That's how badass I am. Are you that badass? What?? "
@@ -54,7 +54,7 @@ export class RecipeService {
       {
         recipeId: 4, userId: 1, recipeTitle: "Black pudding",
         imgURL: "http://3.bp.blogspot.com/-ybxvrJLwjQA/UPGKc3gRDXI/AAAAAAAAEqU/67poMCWLVnI/s640/IMG_4340.JPG",
-        ingredientsList: [{name: "Spaghetti", amount: "500g"}, {name: "Ground beef", amount: "500g"}],
+        ingredientsList: [{ingredientName: "Spaghetti", amount: "500g"}, {ingredientName: "Ground beef", amount: "500g"}],
         description: "A small taste of blood",
         category: "Blood",
         recipeText: "Just tap the nearest living thing of blood and you're good to go! Mix well and fry in a pan.",
@@ -78,7 +78,7 @@ export class RecipeService {
   }
 
   saveRecipeToDatabase(recipe: Recipe) {
-    console.log(recipe);
+    this.createRecipe(recipe);
   }
 
   getRecipe(recipeId: number) : Recipe {
@@ -88,6 +88,13 @@ export class RecipeService {
         return this.recipes[i];
       }
     }
+  }
+
+  public createRecipe(recipe: Recipe)
+  {
+    this.http.post('http://localhost:8080/recipe/create', recipe).subscribe(data => {
+      console.log(data);
+    });
   }
 
   public findAll()
@@ -107,11 +114,17 @@ export class RecipeService {
           recipe.imgURL = data[i].imgURL;
           recipe.recipeText = data[i].recipeText;
           recipe.gradeList = {rating: 5};
-          recipe.ingredientsList = new Array<Ingredient>();
+          recipe.ingredientsList = data[i].ingredientsList;
           recipe.commentList = new Array<Comment>();
           this.recipes.push(recipe);
         }
     });
 
+  }
+
+  removeRecipe(recipe: Recipe) {
+    this.http.delete('http://localhost:8080/recipe/delete?recipeId=' + recipe.recipeId).subscribe(data => {
+      console.log(data);
+    });
   }
 }

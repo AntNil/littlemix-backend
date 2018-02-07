@@ -72,7 +72,7 @@
 
 
       <ul class="list-group">
-        <li *ngFor="let ing of recipe.ingredientsList; let i = index" class="list-group-item"> {{ing.name}} ({{ing.amount}}) <button class="btn btn-danger" (click)="removeIngredient(i)"><span class="glyphicon glyphicon-remove"></span></button></li>
+        <li *ngFor="let ing of recipe.ingredientsList; let i = index" class="list-group-item"> {{ing.ingredientName}} ({{ing.amount}}) <button class="btn btn-danger" (click)="removeIngredient(i)"><span class="glyphicon glyphicon-remove"></span></button></li>
 
       </ul>
       <div class="row">
