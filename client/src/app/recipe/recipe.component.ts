@@ -22,14 +22,12 @@ export class RecipeComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.recipeId = params['recipeId'];
     });
-
-    console.log(this.recipeId + " from parent class");
     this.comment = new Comment();
 
   }
 
   ngOnInit() {
-    this.getRecipe(this.recipeId);
+    this.recipeService.getRecipe(this.recipeId).then(res => {this.recipe = res as Recipe; console.log("What?");}).catch(Error);
     this.commentList = this.recipe.commentList;
   }
 
@@ -38,10 +36,6 @@ export class RecipeComponent implements OnInit {
     // this.recipeService.saveCommentToDatabase(this.comment);
 
     this.commentList.push({name, comment});
-  }
-
-  private getRecipe(recipeId: number) {
-    this.recipe = this.recipeService.getRecipe(recipeId);
   }
 }
 
