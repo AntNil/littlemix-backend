@@ -21,10 +21,10 @@ public class UserEntity {
 	private String password;
 	private String imgURL;
 	
-	@OneToMany( targetEntity = RecipeEntity.class, orphanRemoval = true, cascade = CascadeType.ALL)
+	@OneToMany( targetEntity = RecipeEntity.class, orphanRemoval = true, cascade = {CascadeType.REMOVE, CascadeType.ALL})
 	private List<RecipeEntity> recipeList;
 
-	@OneToMany(targetEntity = RecipeEntity.class, orphanRemoval = true, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = RecipeEntity.class, orphanRemoval = true, cascade = {CascadeType.REMOVE, CascadeType.ALL})
 	private List<RecipeEntity> favoriteRecipeList;
 	
 	public UserEntity(){ }
