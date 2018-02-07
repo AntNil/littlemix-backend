@@ -61,7 +61,7 @@ public class RecipeController {
 		});
 		return new ResponseEntity<List<RecipeEntity>>(recipeList, HttpStatus.OK);
 	}
-	
+
 	@PutMapping(path="/update")
 	public ResponseEntity<RecipeEntity> updateRecipe(@RequestBody RecipeEntity recipeModel){
 		int currentRecipeId = recipeModel.getRecipeId();
