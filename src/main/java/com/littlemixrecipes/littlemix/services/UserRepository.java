@@ -13,8 +13,7 @@ import java.util.List;
 
 public interface UserRepository extends CrudRepository<UserEntity, Integer> {
 
-    @Modifying
-    @Query(value = "insert into user_entity_favorite_recipe_list (user_entity_user_id, favorite_recipe_list_recipe_id) select ue.user_id, re.recipe_id from user_entity ue, recipe_entity re where re.recipe_id =:recipeId", nativeQuery = true)
-    @Transactional
-    void addToFavorite(@Param("recipeId") int recipeId);
+    @Query("Select ue From UserEntity ue where ue.email=:email")
+    UserEntity findUserByEmail(@Param("email") String email);
+
 }

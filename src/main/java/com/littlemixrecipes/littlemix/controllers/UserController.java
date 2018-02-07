@@ -1,29 +1,42 @@
 package com.littlemixrecipes.littlemix.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.littlemixrecipes.littlemix.entities.UserEntity;
 import com.littlemixrecipes.littlemix.services.UserRepository;
 
+import java.util.List;
+
 @Controller
+@CrossOrigin
 @RequestMapping(path="/user")
 public class UserController {
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@PostMapping(path="/create")
 	public ResponseEntity createUser(@RequestBody UserEntity userModel){
 		userRepository.save(userModel);
 		return new ResponseEntity(HttpStatus.OK);
+	}
+
+	@GetMapping(path = ("/checkLoginDetailsForUser"))
+	public ResponseEntity<UserEntity> checkLoginDetailsForUser(@RequestParam String userEmail, @RequestParam String userPassword){
+		UserEntity userToFront = userRepository.findUserByEmail(userEmail);
+
+		if (userToFront.getPassword().equals(userPassword)){
+			userToFront.setPassword(null);
+			return new ResponseEntity<UserEntity>(userToFront, HttpStatus.OK);
+		}
+		else{
+			return new ResponseEntity<UserEntity>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@GetMapping(path="/getUser")
@@ -47,10 +60,5 @@ public class UserController {
 		userRepository.save(oldUser);
 		
 		return new ResponseEntity<UserEntity>(oldUser, HttpStatus.OK);
-	}
-
-	@PostMapping("/addFavorite")
-	public void createAFavorite(@RequestParam int recipeId){
-		userRepository.addToFavorite(recipeId);
 	}
 }
