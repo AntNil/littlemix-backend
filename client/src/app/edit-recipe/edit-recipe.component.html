@@ -56,7 +56,7 @@
         <div class="col-md-8">
           <div class="form-group">
             <label for="ingredients">Ingredients</label>
-            <input type="text" id="ingredients" [(ngModel)]="ingredients.name" name="ingredients" class="form-control">
+            <input type="text" id="ingredients" [(ngModel)]="ingredients.ingredientName" name="ingredients" class="form-control">
           </div>
         </div>
         <div class="col-md-3">
@@ -77,9 +77,9 @@
       </ul>
       <div class="row">
         <div class="col-lg-12">
-          <button type="button" class="btn btn-success pull-left add-recipe-button" (click)="addRecipe()">Add Recipe
+          <button type="button" class="btn btn-success pull-left add-recipe-button" (click)="updateRecipe()">Update
           </button>
-          <button type="button" class="btn btn-danger pull-right delete-recipe-button" (click)="removeRecipe()">Delete Recipe</button>
+          <button type="button" class="btn btn-danger pull-right delete-recipe-button" (click)="removeRecipe()">Delete</button>
         </div>
       </div>
     </form>

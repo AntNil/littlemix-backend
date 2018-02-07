@@ -50,4 +50,8 @@ export class EditRecipeComponent implements OnInit {
   removeRecipe() {
     this.recipeService.removeRecipe(this.recipe);
   }
+
+  updateRecipe() {
+    this.recipeService.updateRecipe(this.recipe);
+  }
 }
