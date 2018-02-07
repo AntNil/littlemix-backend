@@ -1,7 +1,10 @@
 package com.littlemixrecipes.littlemix.controllers;
 
 import com.littlemixrecipes.littlemix.entities.CommentEntity;
+import com.littlemixrecipes.littlemix.entities.RecipeEntity;
 import com.littlemixrecipes.littlemix.services.CommentRepository;
+import com.littlemixrecipes.littlemix.services.RecipeRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,7 @@ public class CommentController {
 
     @Autowired
     private CommentRepository commentRepository;
+    @Autowired RecipeRepository recipeRepository;
 
     @Transactional(readOnly = true)
     @GetMapping("/getComments")
@@ -26,8 +30,11 @@ public class CommentController {
     }
 
     @PostMapping("/createComment")
-    public CommentEntity createAComment(@RequestBody CommentEntity commentObject){
-        return commentRepository.save(commentObject);
+    public ResponseEntity createAComment(@RequestBody CommentEntity commentObject){
+    	RecipeEntity recipe = recipeRepository.findOne(commentObject.getRecipeId());
+    	recipe.getCommentList().add(commentObject);
+    	recipeRepository.save(recipe);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping("/updateComment")
