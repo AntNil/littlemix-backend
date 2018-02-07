@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-4">
-    <select class="form-control">
+    <select (change)="select($event.target.value)" class="form-control">
       <option name="all">All categories</option>
-      <option *ngFor="let opt of categories">{{opt}}</option>
+      <option   *ngFor="let opt of categories" value="{{opt}}" >{{opt}}</option>
     </select>
   </div>
     <div class="col-md-4 col-md-offset-4">

@@ -9,6 +9,8 @@ export class FilterComponent implements OnInit {
 
   categories: string [];
   searchString: string;
+  selectedCategory: string;
+  category: string;
 
   constructor() {
     this.categories = new Array();
@@ -27,4 +29,8 @@ export class FilterComponent implements OnInit {
   searchButtonPressed() {
 
   }
+  select(value){
+
+
+}
 }
