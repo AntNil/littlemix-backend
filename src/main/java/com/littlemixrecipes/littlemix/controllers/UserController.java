@@ -17,7 +17,7 @@ public class UserController {
 	private UserRepository userRepository;
 	
 	@PostMapping(path="/create")
-	public ResponseEntity createUser(@RequestBody UserEntity userModel){
+	public ResponseEntity createUser(@RequestBody UserEntity userModel) {
 		userRepository.save(userModel);
 		return new ResponseEntity(HttpStatus.OK);
 	}
@@ -43,5 +43,12 @@ public class UserController {
 		userRepository.save(oldUser);
 		
 		return new ResponseEntity<UserEntity>(oldUser, HttpStatus.OK);
+	}
+	@GetMapping(path="/login")
+	public ResponseEntity login(@RequestParam String userName, @RequestParam String password){
+		//TODO: fix logic for logging in, return responseEntity httpstatus.ok
+		
+		
+		return null;
 	}
 }

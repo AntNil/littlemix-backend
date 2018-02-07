@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.littlemixrecipes.littlemix.services.RecipeRepository;
+import com.littlemixrecipes.littlemix.services.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.*;
 
 import com.littlemixrecipes.littlemix.entities.RecipeEntity;
+import com.littlemixrecipes.littlemix.entities.UserEntity;
 
 @Controller
 @CrossOrigin
@@ -26,12 +28,16 @@ import com.littlemixrecipes.littlemix.entities.RecipeEntity;
 public class RecipeController {
 	@Autowired
 	private RecipeRepository recipeRepository;
+	@Autowired
+	private UserRepository userRepository;
 	
 	int currentRecipeId;
 	
 	@PostMapping(path="/create")
-	public ResponseEntity createRecipe(@RequestBody RecipeEntity recipeModel) {
-		recipeRepository.save(recipeModel);
+	public ResponseEntity createRecipe(@RequestBody RecipeEntity recipeModel) {	
+		UserEntity user = userRepository.findOne(recipeModel.getUserId());
+		user.getRecipeList().add(recipeModel);
+		userRepository.save(user);
 		return new ResponseEntity(HttpStatus.OK);
 	}
 	
