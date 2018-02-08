@@ -22,7 +22,7 @@ public class GradeController {
     @Autowired
     private GradeRepository gradeRepository;
     @Autowired 
-    RecipeRepository recipeRepository;
+    private RecipeRepository recipeRepository;
 
     @GetMapping("/getGrade")
     public double getFinalGradeOnRecipie(@RequestParam int recipeId){
