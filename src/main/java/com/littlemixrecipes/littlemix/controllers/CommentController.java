@@ -16,6 +16,7 @@ import java.util.List;
 /*Created by jennifergisslow on 2018-02-04.*/
 
 @RestController
+@CrossOrigin
 @RequestMapping("/comment")
 public class CommentController {
 

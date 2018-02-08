@@ -85,11 +85,16 @@ public class RecipeController {
 	
 	@GetMapping(path="/getByCategory")
 	public ResponseEntity<List<RecipeEntity>> getRecipesByCategory(@RequestParam String category){
-		 List<RecipeEntity> recipeList = recipeRepository.findRecipeByCategory(category);
-		 if( recipeList == null){
+		 List<RecipeEntity> recipeList = new ArrayList<>();
+		 recipeRepository.findAll().forEach(recipe -> {
+		 	if(recipe.getCategory().equalsIgnoreCase(category))
+		 		recipeList.add(recipe);
+		 });
+/*		 if( recipeList == null){
 			 return new ResponseEntity<List<RecipeEntity>>(HttpStatus.NOT_FOUND);
-		 }
-		return new ResponseEntity<List<RecipeEntity>>(recipeList, HttpStatus.OK);
+		 }*/
+		System.out.println(recipeList);
+		return new ResponseEntity<>(recipeList, HttpStatus.OK);
 	}
 	
 	@GetMapping(path="/getAllRecipes")

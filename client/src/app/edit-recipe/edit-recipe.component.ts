@@ -60,4 +60,9 @@ export class EditRecipeComponent implements OnInit {
   goToStartPage() {
     this.router.navigate(['/home']);
   }
+
+  onSelect(value)
+  {
+    this.recipe.category = value;
+  }
 }
