@@ -19,6 +19,7 @@
 
         <a  routerLink="/recipe/edit/{{recipe?.recipeId}}"><span  class="glyphicon glyphicon-edit"></span></a>
       </div>
+      </div>
 
 
 
@@ -33,12 +34,12 @@
 
         <div class="form-group ">
           <label for="nam">Name</label>
-          <input #nameInput type="text" class="form-control" id="nam" required [(ngModel)]="comment.name"  name="name">
+          <input #nameInput type="text" class="form-control" id="nam" required [(ngModel)]="comment.userName"  name="name">
         </div>
 
         <div class="form-group">
           <label for="comment">Comment</label>
-          <textarea #commentInput class="form-control" id="comment" rows="3" required [(ngModel)]="comment.comment" name="comment"></textarea>
+          <textarea #commentInput class="form-control" id="comment" rows="3" required [(ngModel)]="comment.commentText" name="comment"></textarea>
         </div>
         <button   (click)="registerComment(nameInput.value, commentInput.value )" type="button" class="btn btn-primary btn-sm">Submit</button>
 

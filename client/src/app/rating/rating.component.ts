@@ -47,7 +47,7 @@ export class RatingComponent implements OnInit {
     });
     this.recipeService.saveCRatingToDatabase(inputrating, this.recipe.recipeId);
     window.setTimeout(() => {
-      this.recipeService.fetchGrades(this.recipe.recipeId).then(res => {
+      this.recipeService.fetchGrades(this.recipe.recipeId).then(() => {
         this.finalGrade = this.recipeService.finalGrade;
         this.inputrating = this.recipeService.grade});
     }, 100);
