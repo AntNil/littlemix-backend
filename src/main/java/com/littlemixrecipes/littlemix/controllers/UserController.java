@@ -23,11 +23,11 @@ public class UserController {
 		return new ResponseEntity(HttpStatus.OK);
 	}
 
-	@GetMapping(path = ("/checkLoginDetailsForUser"))
-	public ResponseEntity<UserEntity> checkLoginDetailsForUser(@RequestParam String userEmail, @RequestParam String userPassword){
-		UserEntity userToFront = userRepository.findUserByEmail(userEmail);
+	@PostMapping(path = "/checkLoginDetailsForUser")
+	public ResponseEntity<UserEntity> checkLoginDetailsForUser(@RequestBody UserEntity userModel){
+		UserEntity userToFront = userRepository.findUserByEmail(userModel.getEmail());
 
-		if (userToFront.getPassword().equals(userPassword)){
+		if (userToFront.getPassword().equals(userModel.getPassword())){
 			userToFront.setPassword(null);
 			return new ResponseEntity<UserEntity>(userToFront, HttpStatus.OK);
 		}
@@ -35,8 +35,8 @@ public class UserController {
 			return new ResponseEntity<UserEntity>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	@GetMapping(path="/getUser")
+
+	@PutMapping(path="/getUser")
 	public ResponseEntity<UserEntity> getUser(int userId){
 		UserEntity user = userRepository.findOne(userId);
 		if(user == null){

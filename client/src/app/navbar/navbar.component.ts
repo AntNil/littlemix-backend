@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from "../models/user.modal";
+import {current} from "codelyzer/util/syntaxKind";
+import {UserService} from "../services/user.service";
+
 declare let $: any;
 
 @Component({
@@ -7,20 +11,29 @@ declare let $: any;
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-hello: boolean = true;
+  currentUser: User;
 
-  constructor() { }
+
+  constructor(private userService: UserService) {
+
+  }
 
   ngOnInit() {
+    this.setCurrentUser();
   }
 
-  bla() {
-    this.hello = !this.hello;
-    console.log("Loooog");
-  }
 
   showModal() {
     $("#myModal").modal('show');
   }
 
+
+  logoutCurrentUser() {
+    this.currentUser = null;
+    localStorage.clear();
+  }
+
+  setCurrentUser(){
+    this.currentUser = this.userService.getCurrentUser();
+  }
 }
