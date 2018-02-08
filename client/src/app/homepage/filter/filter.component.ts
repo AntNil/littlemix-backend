@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {RecipeService} from "../../services/recipe.service";
+import {Recipe} from "../../models/recipe.modal";
 
 @Component({
   selector: 'app-filter',
@@ -9,6 +10,7 @@ import {RecipeService} from "../../services/recipe.service";
 export class FilterComponent implements OnInit {
 
   categories: string [];
+  @Input() recipes: Recipe[];
 
   constructor(private recipeService: RecipeService) {
     this.categories = new Array();
@@ -27,8 +29,17 @@ export class FilterComponent implements OnInit {
   searchButtonPressed() {
 
   }
-  select(value){
-this.recipeService.findPerCategory(value);
 
-}
+  select(value){
+    this.recipes.length = 0;
+    if(value == "All categories")
+    {
+      this.recipeService.getAllToArray(this.recipes);
+    } else {
+      this.recipeService.findPerCategory(value).then(res => {
+        var tempRecipes = res as Array<Recipe>;
+        tempRecipes.forEach(recipe => this.recipes.push(recipe));
+      });
+    }
+  }
 }

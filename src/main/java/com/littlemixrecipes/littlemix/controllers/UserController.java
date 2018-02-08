@@ -1,8 +1,6 @@
 package com.littlemixrecipes.littlemix.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import com.littlemixrecipes.littlemix.entities.UserEntity;
 import com.littlemixrecipes.littlemix.services.UserRepository;
 
-import java.util.List;
 
 @Controller
 @CrossOrigin
@@ -26,11 +23,11 @@ public class UserController {
 		return new ResponseEntity(HttpStatus.OK);
 	}
 
-	@GetMapping(path = ("/checkLoginDetailsForUser"))
-	public ResponseEntity<UserEntity> checkLoginDetailsForUser(@RequestParam String userEmail, @RequestParam String userPassword){
-		UserEntity userToFront = userRepository.findUserByEmail(userEmail);
+	@PostMapping(path = "/checkLoginDetailsForUser")
+	public ResponseEntity<UserEntity> checkLoginDetailsForUser(@RequestBody UserEntity userModel){
+		UserEntity userToFront = userRepository.findUserByEmail(userModel.getEmail());
 
-		if (userToFront.getPassword().equals(userPassword)){
+		if (userToFront.getPassword().equals(userModel.getPassword())){
 			userToFront.setPassword(null);
 			return new ResponseEntity<UserEntity>(userToFront, HttpStatus.OK);
 		}
@@ -38,9 +35,7 @@ public class UserController {
 			return new ResponseEntity<UserEntity>(HttpStatus.NOT_FOUND);
 		}
 	}
-
-	
-	@GetMapping(path="/getUser")
+	@PutMapping(path="/getUser")
 	public ResponseEntity<UserEntity> getUser(int userId){
 		UserEntity user = userRepository.findOne(userId);
 		if(user == null){
@@ -61,12 +56,5 @@ public class UserController {
 		userRepository.save(oldUser);
 		
 		return new ResponseEntity<UserEntity>(oldUser, HttpStatus.OK);
-	}
-	@GetMapping(path="/login")
-	public ResponseEntity login(@RequestParam String userName, @RequestParam String password){
-		//TODO: fix logic for logging in, return responseEntity httpstatus.ok
-		
-		
-		return null;
 	}
 }

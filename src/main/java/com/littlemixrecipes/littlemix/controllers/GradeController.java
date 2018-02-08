@@ -21,7 +21,8 @@ public class GradeController {
 
     @Autowired
     private GradeRepository gradeRepository;
-    @Autowired RecipeRepository recipeRepository;
+    @Autowired 
+    RecipeRepository recipeRepository;
 
     @GetMapping("/getGrade")
     public double getFinalGradeOnRecipie(@RequestParam int recipeId){
@@ -38,7 +39,7 @@ public class GradeController {
     }
 
     @PostMapping("/createGrade")
-    public ResponseEntity createAGrade(@RequestBody GradeEntity gradeObject){
+    public ResponseEntity createAGrade(@RequestBody GradeEntity gradeObject) {
     	RecipeEntity recipe = recipeRepository.findOne(gradeObject.getRecipeId());
     	recipe.getGradeList().add(gradeObject);
     	recipeRepository.save(recipe);

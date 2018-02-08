@@ -22,7 +22,8 @@ public class CommentController {
 
     @Autowired
     private CommentRepository commentRepository;
-    @Autowired RecipeRepository recipeRepository;
+    @Autowired 
+    private RecipeRepository recipeRepository;
 
     @Transactional(readOnly = true)
     @GetMapping("/getComments")
