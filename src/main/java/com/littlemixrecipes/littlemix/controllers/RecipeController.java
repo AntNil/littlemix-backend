@@ -91,6 +91,19 @@ public class RecipeController {
 		 }
 		return new ResponseEntity<List<RecipeEntity>>(recipeList, HttpStatus.OK);
 	}
+
+	@GetMapping(path = "/getRecipeListFromSearchString")
+	public ResponseEntity<List<RecipeEntity>> getRecipeListFromSearchString(@RequestParam String searchString){
+		List<RecipeEntity> listWithRecipeFromSearchString = new ArrayList<>();
+		List<RecipeEntity> listWithAllRecipe = (List<RecipeEntity>) recipeRepository.findAll();
+
+		for (RecipeEntity aListWithAllRecipe : listWithAllRecipe) {
+			if (aListWithAllRecipe.getRecipeTitle().toLowerCase().matches("(.*)" + searchString.toLowerCase() + "(.*)")) {
+				listWithRecipeFromSearchString.add(aListWithAllRecipe);
+			}
+		}
+		return new ResponseEntity<List<RecipeEntity>>(listWithRecipeFromSearchString, HttpStatus.OK);
+	}
 	
 	@GetMapping(path="/getAllRecipes")
 	public ResponseEntity<List<RecipeEntity>> getAllRecipes() {
