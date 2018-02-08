@@ -1,5 +1,6 @@
 export class Comment{
 
-  name: string;
-  comment: string;
+  userName: string;
+  commentText: string;
+  recipeId: number;
 }

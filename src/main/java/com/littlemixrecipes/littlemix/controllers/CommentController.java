@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*Created by jennifergisslow on 2018-02-04.*/
@@ -34,8 +35,8 @@ public class CommentController {
     @PostMapping("/createComment")
     public ResponseEntity createAComment(@RequestBody CommentEntity commentObject){
     	RecipeEntity recipe = recipeRepository.findOne(commentObject.getRecipeId());
-    	recipe.getCommentList().add(commentObject);
-    	recipeRepository.save(recipe);
+        recipe.getCommentList().add(commentObject);
+        recipeRepository.save(recipe);
         return new ResponseEntity(HttpStatus.OK);
     }
 

@@ -32,10 +32,12 @@ export class RecipeComponent implements OnInit {
   }
 
   registerComment(name: string, comment: string) {
-    console.log(this.comment);
-    // this.recipeService.saveCommentToDatabase(this.comment);
+    this.comment.recipeId = this.recipe.recipeId;
+    this.comment.userName = name;
+    this.comment.commentText = comment;
 
-    this.recipe.commentList.push({name, comment});
+    this.recipeService.saveCommentToDatabase(this.comment);
+    this.recipe.commentList.push(this.comment);
   }
 }
 
