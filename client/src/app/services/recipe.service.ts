@@ -107,7 +107,6 @@ export class RecipeService {
   }
 
   public findPerRecipeTitle(title: string){
-    console.log(title);
     let promise = new Promise((resolve, reject) => {
       this.http.post('http://localhost:8080/recipe/getRecipeListFromSearchString?searchString=', title).subscribe(data => {
         let inRecipes = data as Array<Object>;

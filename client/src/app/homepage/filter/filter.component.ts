@@ -27,6 +27,7 @@ export class FilterComponent implements OnInit {
   }
 
   searchButtonPressed(value) {
+    this.recipes.length = 0;
     if(!value){
       this.recipeService.findPerRecipeTitle("getAll").then(res => {
         var tempRecipes = res as Array<Recipe>;
@@ -36,7 +37,6 @@ export class FilterComponent implements OnInit {
 
     }
     else {
-      this.recipes.length = 0;
 
       this.recipeService.findPerRecipeTitle(value).then(res => {
         var tempRecipes = res as Array<Recipe>;
