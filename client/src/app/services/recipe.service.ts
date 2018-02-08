@@ -106,15 +106,18 @@ export class RecipeService {
   }
 
   public findPerRecipeTitle(title: string){
-    this.http.post('http://localhost:8080/recipe/getRecipeListFromSearchString', {"title": title}).subscribe( data => {
-      let inRecipes = data as Array<Object>;
-      this.recipes = new Array<Recipe>();
-      for(var i = 0; i < inRecipes.length; i++)
-      {
-        this.recipes.push(data[i]);
-      }
+    console.log(title);
+    let promise = new Promise((resolve, reject) => {
+      this.http.post('http://localhost:8080/recipe/getRecipeListFromSearchString?searchString=', title).subscribe(data => {
+        let inRecipes = data as Array<Object>;
+        this.recipes = new Array<Recipe>();
+        for (var i = 0; i < inRecipes.length; i++) {
+          this.recipes.push(data[i]);
+        }
+        resolve(this.recipes);
+      });
     });
-    return this.recipes;
+    return promise;
   }
 
   removeRecipe(recipe: Recipe) {

@@ -98,8 +98,9 @@ public class RecipeController {
 		return new ResponseEntity<>(recipeList, HttpStatus.OK);
 	}
 
-	@GetMapping(path = "/getRecipeListFromSearchString")
-	public ResponseEntity<List<RecipeEntity>> getRecipeListFromSearchString(@RequestParam String searchString){
+	@PostMapping(path = "/getRecipeListFromSearchString")
+	public ResponseEntity<List<RecipeEntity>> getRecipeListFromSearchString(@RequestBody String searchString){
+		System.out.println(searchString + " fdgdfgdfhfghgfhfdhd murloc");
 		List<RecipeEntity> listWithRecipeFromSearchString = new ArrayList<>();
 		List<RecipeEntity> listWithAllRecipe = (List<RecipeEntity>) recipeRepository.findAll();
 		for (RecipeEntity aListWithAllRecipe : listWithAllRecipe) {
