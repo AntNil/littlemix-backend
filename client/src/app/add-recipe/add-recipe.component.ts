@@ -20,6 +20,7 @@ export class AddRecipeComponent implements OnInit {
   constructor(private recipeService: RecipeService,
               private router: Router) {
     this.recipe = new Recipe();
+    this.recipe.category = "Dairy";
     this.categories = new Array();
     this.ingredients = new Ingredient();
     this.recipe.ingredientsList = new Array();

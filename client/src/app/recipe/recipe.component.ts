@@ -33,7 +33,8 @@ export class RecipeComponent implements OnInit {
     this.recipeService.getRecipe(this.recipeId).then(res => {
       this.recipe = res as Recipe;
       this.currentUser = this.userService.getCurrentUser();
-
+      console.log(this.currentUser.userId);
+      console.log(this.recipe.userId);
       if(this.recipe.userId == this.currentUser.userId){
         this.hasEditRights = true;
       }else{
@@ -49,6 +50,7 @@ export class RecipeComponent implements OnInit {
 
     this.recipeService.saveCommentToDatabase(this.comment);
     this.recipe.commentList.push(this.comment);
+    window.location.reload();
   }
 }
 

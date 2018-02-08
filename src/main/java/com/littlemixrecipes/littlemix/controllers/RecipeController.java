@@ -80,6 +80,8 @@ public class RecipeController {
 		if(r == null){
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		}
+		UserEntity u = userRepository.findOne(r.getUserId());
+		u.getRecipeList().remove(r);
 		recipeRepository.delete(r);
 		return new ResponseEntity(HttpStatus.OK);
 	}
