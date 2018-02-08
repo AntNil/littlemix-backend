@@ -12,6 +12,8 @@ export class RecipeService {
 
   recipes: Recipe[];
   recipe: Recipe;
+  grade: number;
+  finalGrade: number;
 
 
   constructor(private http:HttpClient, private router : Router ) {
@@ -36,16 +38,27 @@ export class RecipeService {
     });
   }
 
-  getGrade(recipeId: number) {
+  fetchGrades(recipeId: number) {
     let promise = new Promise((resolve, reject) => {
       this.http.get('http://localhost:8080/grade/getGrade?recipeId=' + recipeId)
         .toPromise()
         .then(res => {
-          console.log(res);
-          resolve(res);
+          /*console.log(res);
+          resolve(res);*/
+          this.finalGrade = parseFloat(res as string);
+          this.grade = Math.round(this.finalGrade);
+          resolve({"finalGrade": this.finalGrade, "grade": this.grade});
         })
     });
     return promise;
+  }
+
+  getGrade() : number {
+    return this.grade;
+  }
+
+  getFinalGrade() : number {
+    return this.finalGrade;
   }
 
   saveRecipeToDatabase(recipe: Recipe) {

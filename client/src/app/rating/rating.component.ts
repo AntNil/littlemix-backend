@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Rating}from "../models/rating.modal";
 import {Recipe}from "../models/recipe.modal";
 import {RecipeService} from "../services/recipe.service";
+import {Observable} from "rxjs/Observable";
 
 
 
@@ -24,22 +25,32 @@ export class RatingComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.setTimeout(() => {
+      this.recipeService.fetchGrades(this.recipe.recipeId).then(res => {
+        this.finalGrade = this.recipeService.getFinalGrade();
+        this.inputrating = this.recipeService.getGrade();
+        }).catch(Error);
+    }, 500);
     window.setTimeout(() => {this.emitNumber();}, 1000);
   }
 
   emitNumber() {
-    console.log(this.inputrating);
     this.ratingClick.emit({
       inputrating: this.inputrating
     });
   }
 
   onClick(inputrating: number): void {
-    this.inputrating = inputrating;
+      this.inputrating = inputrating;
     this.ratingClick.emit({
       inputrating: inputrating
     });
     this.recipeService.saveCRatingToDatabase(inputrating, this.recipe.recipeId);
+    window.setTimeout(() => {
+      this.recipeService.fetchGrades(this.recipe.recipeId).then(res => {
+        this.finalGrade = this.recipeService.finalGrade;
+        this.inputrating = this.recipeService.grade});
+    }, 100);
   }
 
 }

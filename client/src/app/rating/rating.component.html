@@ -1,4 +1,4 @@
-<fieldset dir="rtl" class="rating text-center">
+<fieldset style="display: inline-block;" dir="rtl" class="rating text-center">
   <input
     type="radio"
          value="5"
@@ -29,3 +29,4 @@
          [checked]="inputrating===1" />
   <label title="Sucks big time" (click)='onClick(1)'>1 star</label>
 </fieldset>
+<p style="display: inline-block; vertical-align: text-bottom;">{{finalGrade?.toFixed(2)}}</p>
