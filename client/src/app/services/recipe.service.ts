@@ -87,7 +87,9 @@ export class RecipeService {
 
   public updateRecipe(recipe: Recipe)
   {
-    this.http.put('http://localhost:8080/recipe/update', recipe);
+    this.http.put('http://localhost:8080/recipe/update', recipe).subscribe(data => {
+      console.log(data);
+    });
   }
 
   public findAll()
@@ -148,7 +150,7 @@ export class RecipeService {
   }
 
   removeRecipe(recipe: Recipe) {
-    this.http.delete('http://localhost:8080/recipe/delete?recipeId=' + recipe.recipeId).subscribe(data => {
+    return this.http.delete('http://localhost:8080/recipe/delete?recipeId=' + recipe.recipeId).subscribe(data => {
       console.log(data);
     });
   }
