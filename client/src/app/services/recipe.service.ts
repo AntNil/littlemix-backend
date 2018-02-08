@@ -24,7 +24,8 @@ export class RecipeService {
   }
 
   saveCommentToDatabase(comment: Comment) {
-    this.http.post('http://localhost:8080/recipe/createComment', {"comment": Comment}).subscribe( data => {
+    console.log(comment);
+    this.http.post('http://localhost:8080/comment/createComment', {"commentText": comment.commentText, "userName": comment.userName, "recipeId": comment.recipeId}).subscribe( data => {
       console.log(data);
     });
 
