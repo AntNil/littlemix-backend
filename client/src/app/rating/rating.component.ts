@@ -30,8 +30,8 @@ export class RatingComponent implements OnInit {
 
   ngOnInit() {
     //this.rating = this.recipe.rating;
-    console.log(this.recipe);
-    this.rating = this.recipe.gradeList;
+/*    console.log(this.recipe);
+    this.rating = this.recipe.gradeList;*/
     this.setRatingValue(this.rating.rating);
   }
   onClick(inputrating: number): void {
@@ -51,7 +51,7 @@ export class RatingComponent implements OnInit {
 
   }
   public getRating(recipeId: number): void {
-    this.rating = this.recipeService.recipes[recipeId].gradeList;
+/*    this.rating = this.recipeService.recipes[recipeId].gradeList;*/
   }
 
 }

@@ -16,12 +16,14 @@ import java.util.List;
 /*Created by jennifergisslow on 2018-02-04.*/
 
 @RestController
+@CrossOrigin
 @RequestMapping("/comment")
 public class CommentController {
 
     @Autowired
     private CommentRepository commentRepository;
-    @Autowired RecipeRepository recipeRepository;
+    @Autowired 
+    private RecipeRepository recipeRepository;
 
     @Transactional(readOnly = true)
     @GetMapping("/getComments")

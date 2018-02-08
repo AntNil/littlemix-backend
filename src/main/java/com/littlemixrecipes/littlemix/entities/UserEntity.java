@@ -26,8 +26,6 @@ public class UserEntity {
 
 	@OneToMany(targetEntity = RecipeEntity.class, orphanRemoval = true, cascade = {CascadeType.REMOVE, CascadeType.ALL})
 	private List<RecipeEntity> favoriteRecipeList;
-	
-	public UserEntity(){ }
 
 	public int getUserId() {
 		return userId;

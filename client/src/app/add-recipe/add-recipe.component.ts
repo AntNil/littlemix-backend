@@ -3,6 +3,7 @@ import {Recipe} from "../models/recipe.modal";
 import {Ingredient} from "../models/ingredient.modal";
 import {RecipeService} from "../services/recipe.service";
 import {Router} from "@angular/router";
+import {User} from "../models/user.modal";
 
 @Component({
   selector: 'app-add-recipe',
@@ -14,18 +15,21 @@ export class AddRecipeComponent implements OnInit {
   recipe: Recipe;
   categories: string [];
   ingredients: Ingredient;
+  userId: number;
 
-  constructor(private recipeService: RecipeService, private router: Router) {
+  constructor(private recipeService: RecipeService) {
     this.recipe = new Recipe();
     this.categories = new Array();
     this.ingredients = new Ingredient();
     this.recipe.ingredientsList = new Array();
+    let user = JSON.parse(localStorage.getItem("currentUser"));
+    this.userId = +user.userId;
 
   }
 
   ngOnInit() {
     this.setCategories();
-    console.log(this.categories)
+    this.recipe.userId = this.userId;
   }
 
 
@@ -37,7 +41,12 @@ export class AddRecipeComponent implements OnInit {
 
   addRecipe() {
     this.recipeService.saveRecipeToDatabase(this.recipe);
-    this.router.navigate(["/home"]);
+    console.log(this.recipe);
+/*    this.router.navigate(["/home"]);*/
+  }
+
+  onSelect(value) {
+    this.recipe.category = value;
   }
 
   addIngredient() {

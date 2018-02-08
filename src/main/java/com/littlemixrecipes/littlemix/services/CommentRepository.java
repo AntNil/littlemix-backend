@@ -13,5 +13,4 @@ public interface CommentRepository extends CrudRepository<CommentEntity, Integer
     @Query("Select c from CommentEntity c where c.recipeId =:recipeId")
     List<CommentEntity> findByRecipeId(@Param("recipeId") int recipeId);
 
-
 }

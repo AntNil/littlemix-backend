@@ -13,9 +13,11 @@ export class Recipe {
   userId: number;
   commentList: Comment[];
   ingredientsList: Ingredient[];
-  gradeList: Rating;
+  gradeList: Rating[];
 
 
   constructor() {
+    this.commentList = new Array<Comment>();
+    this.gradeList = new Array<Rating>();
   }
 }

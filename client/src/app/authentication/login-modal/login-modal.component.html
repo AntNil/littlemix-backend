@@ -12,12 +12,17 @@
         </div>
         <div class="row">
           <div class="col-md-10 col-md-offset-1">
-            <input placeholder="Username" type="text" [(ngModel)]="email" name="username" id="inputUsername" class="form-control">
+            <input placeholder="Username" type="text" [(ngModel)]="user.email" name="username" id="inputUsername" class="form-control">
           </div>
         </div>
         <div class="row">
           <div class="col-md-10 col-md-offset-1">
-            <input placeholder="Password" type="password" [(ngModel)]="password" name="password" id="inputPassword" class="form-control">
+            <input placeholder="Password" type="password" [(ngModel)]="user.password" name="password" id="inputPassword" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 text-center">
+            <span style="color: red">{{errorText}}</span>
           </div>
         </div>
         <div class="row">

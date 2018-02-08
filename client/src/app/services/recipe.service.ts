@@ -38,9 +38,6 @@ export class RecipeService {
   }
 
   getRecipe(recipeId: number) {
-/*    return this.http.get('http://localhost:8080/recipe/getRecipe?recipeId=' + recipeId, {}).subscribe( data => {
-      this.recipe = data as Recipe;
-    });*/
     let promise = new Promise((resolve, reject) => {
       let apiURL = 'http://localhost:8080/recipe/getRecipe?recipeId=' + recipeId;
       this.http.get(apiURL)
@@ -60,39 +57,52 @@ export class RecipeService {
     this.http.post('http://localhost:8080/recipe/create', recipe).subscribe(data => {
       console.log(data);
     });
+    console.log(recipe);
   }
 
   public updateRecipe(recipe: Recipe)
   {
-    this.http.put('http://localhost:8080/recipe/update', recipe).subscribe(data => {
-      console.log(data);
-    });
+    this.http.put('http://localhost:8080/recipe/update', recipe);
   }
 
   public findAll()
   {
-    this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
+    let promise = new Promise((resolve, reject) => {
+      this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
         let inRecipes = data as Array<Object>;
-        let outRecipes = new Array<Recipe>();
-        for(var i = 0; i < inRecipes.length; i++)
-        {
+        for (var i = 0; i < inRecipes.length; i++) {
           var recipe = data[i];
           this.recipes.push(recipe);
         }
+      });
     });
+    return promise;
   }
 
-  public findPerCategory(category: string) : Recipe[]
+  public getAllToArray(inputRecipes: Recipe[])
   {
-    this.http.post('http://localhost:8080/recipe/getByCategory', {"category": category}).subscribe( data => {
-      let inRecipes = data as Array<Object>;
-      this.recipes = new Array<Recipe>();
-      for(var i = 0; i < inRecipes.length; i++)
-      {
-        this.recipes.push(data[i]);
-      }
+    let promise = new Promise((resolve, reject) => {
+      this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
+        let inRecipes = data as Array<Object>;
+        for (var i = 0; i < inRecipes.length; i++) {
+          inputRecipes.push(data[i] as Recipe);
+        }
+      });
     });
-    return this.recipes;
+    return promise;
+  }
+
+  public findPerCategory(category: string)
+  {
+    let promise = new Promise((resolve, reject) => {
+      this.http.get('http://localhost:8080/recipe/getByCategory?category=' + category)
+        .toPromise()
+        .then(res => {
+          console.log(res);
+          resolve(res);
+        })
+    });
+    return promise;
   }
 
   public findPerRecipeTitle(title: string){
