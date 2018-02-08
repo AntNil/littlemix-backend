@@ -16,7 +16,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="currentUser"><a>{{currentUser.firstName}} {{currentUser.lastName}}</a></li>
-        <li *ngIf="currentUser && !currentUser.imgURL"><img width="40" height="40"style="border-radius: 50%; margin-top: 5px" src={{currentUser.imgURL}}></li>
+        <li *ngIf="currentUser"><img width="40" height="40"style="border-radius: 50%; margin-top: 5px" src={{currentUser.imgURL}}></li>
         <li *ngIf="!currentUser" routerLinkActive="active"><a routerLink="/registration" ><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li *ngIf="!currentUser" routerLinkActive="active"><a (click)="showModal()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         <li *ngIf="currentUser"><a (click)="logoutCurrentUser()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
