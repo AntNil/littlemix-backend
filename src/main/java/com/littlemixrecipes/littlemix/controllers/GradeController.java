@@ -17,7 +17,6 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/grade")
-@CrossOrigin
 public class GradeController {
 
     @Autowired
