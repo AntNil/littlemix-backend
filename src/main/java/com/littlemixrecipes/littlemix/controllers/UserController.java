@@ -35,7 +35,6 @@ public class UserController {
 			return new ResponseEntity<UserEntity>(HttpStatus.NOT_FOUND);
 		}
 	}
-
 	@PutMapping(path="/getUser")
 	public ResponseEntity<UserEntity> getUser(int userId){
 		UserEntity user = userRepository.findOne(userId);

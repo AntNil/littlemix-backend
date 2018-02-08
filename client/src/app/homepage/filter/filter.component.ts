@@ -26,8 +26,8 @@ export class FilterComponent implements OnInit {
     this.categories.push("Dairy", "Vegan", "Meat", "Fish", "Poultry");
   }
 
-  searchButtonPressed() {
-
+  searchButtonPressed(value) {
+  this.recipeService.findPerRecipeTitle(value);
   }
 
   select(value){
