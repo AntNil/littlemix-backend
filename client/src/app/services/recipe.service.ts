@@ -13,6 +13,7 @@ export class RecipeService {
   recipes: Recipe[];
   recipe: Recipe;
 
+
   constructor(private http:HttpClient, private router : Router ) {
     this.recipes = new Array<Recipe>();
     this.findAll();
@@ -23,7 +24,10 @@ export class RecipeService {
   }
 
   saveCommentToDatabase(comment: Comment) {
-    console.log(comment);
+    this.http.post('http://localhost:8080/recipe/createComment', {"comment": Comment}).subscribe( data => {
+      console.log(data);
+    });
+
   }
   saveCRatingToDatabase(rating: Rating) {
     console.log(rating);
@@ -63,15 +67,29 @@ export class RecipeService {
 
   public findAll()
   {
-    this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
+    let promise = new Promise((resolve, reject) => {
+      this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
         let inRecipes = data as Array<Object>;
-        let outRecipes = new Array<Recipe>();
-        for(var i = 0; i < inRecipes.length; i++)
-        {
+        for (var i = 0; i < inRecipes.length; i++) {
           var recipe = data[i];
           this.recipes.push(recipe);
         }
+      });
     });
+    return promise;
+  }
+
+  public getAllToArray(inputRecipes: Recipe[])
+  {
+    let promise = new Promise((resolve, reject) => {
+      this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
+        let inRecipes = data as Array<Object>;
+        for (var i = 0; i < inRecipes.length; i++) {
+          inputRecipes.push(data[i] as Recipe);
+        }
+      });
+    });
+    return promise;
   }
 
   public findPerCategory(category: string)
@@ -85,6 +103,18 @@ export class RecipeService {
         })
     });
     return promise;
+  }
+
+  public findPerRecipeTitle(title: string){
+    this.http.post('http://localhost:8080/recipe/getRecipeListFromSearchString', {"title": title}).subscribe( data => {
+      let inRecipes = data as Array<Object>;
+      this.recipes = new Array<Recipe>();
+      for(var i = 0; i < inRecipes.length; i++)
+      {
+        this.recipes.push(data[i]);
+      }
+    });
+    return this.recipes;
   }
 
   removeRecipe(recipe: Recipe) {

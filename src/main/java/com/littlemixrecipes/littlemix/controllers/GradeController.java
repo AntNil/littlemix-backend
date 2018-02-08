@@ -17,12 +17,12 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/grade")
-@CrossOrigin
 public class GradeController {
 
     @Autowired
     private GradeRepository gradeRepository;
-    @Autowired RecipeRepository recipeRepository;
+    @Autowired 
+    RecipeRepository recipeRepository;
 
     @GetMapping("/getGrade")
     public double getFinalGradeOnRecipie(@RequestParam int recipeId){

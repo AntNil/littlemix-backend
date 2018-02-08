@@ -20,7 +20,7 @@ public class CommentEntity {
 	//OneToMany from IngredientsEntity
 	private int recipeId;
 	
-	public CommentEntity(){
+	public CommentEntity() {
 		commentDate = new Date();
 	}
 	

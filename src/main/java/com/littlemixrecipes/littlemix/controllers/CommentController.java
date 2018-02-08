@@ -18,12 +18,12 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/comment")
-@CrossOrigin
 public class CommentController {
 
     @Autowired
     private CommentRepository commentRepository;
-    @Autowired RecipeRepository recipeRepository;
+    @Autowired 
+    private RecipeRepository recipeRepository;
 
     @Transactional(readOnly = true)
     @GetMapping("/getComments")
