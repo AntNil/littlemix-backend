@@ -14,7 +14,6 @@ import {ActivatedRoute} from "@angular/router";
 export class RecipeComponent implements OnInit {
   @Input() comment: Comment;
   @Output() recipeId: number;
-  commentList: Comment[];
   recipe: Recipe;
 
 
@@ -27,15 +26,16 @@ export class RecipeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recipeService.getRecipe(this.recipeId).then(res => {this.recipe = res as Recipe; console.log("What?");}).catch(Error);
-    this.commentList = this.recipe.commentList;
+    this.recipeService.getRecipe(this.recipeId).then(res => {
+      this.recipe = res as Recipe;
+    }).catch(Error);
   }
 
   registerComment(name: string, comment: string) {
     console.log(this.comment);
     // this.recipeService.saveCommentToDatabase(this.comment);
 
-    this.commentList.push({name, comment});
+    this.recipe.commentList.push({name, comment});
   }
 }
 
