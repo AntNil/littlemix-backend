@@ -27,7 +27,14 @@ export class FilterComponent implements OnInit {
   }
 
   searchButtonPressed(value) {
-    if(!value){}
+    if(!value){
+      this.recipeService.findPerRecipeTitle("getAll").then(res => {
+        var tempRecipes = res as Array<Recipe>;
+        tempRecipes.forEach(recipe => this.recipes.push(recipe));
+      });
+
+
+    }
     else {
       this.recipes.length = 0;
 
