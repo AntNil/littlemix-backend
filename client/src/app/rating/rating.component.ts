@@ -32,7 +32,7 @@ export class RatingComponent implements OnInit {
     //this.rating = this.recipe.rating;
 /*    console.log(this.recipe);
     this.rating = this.recipe.gradeList;*/
-    this.setRatingValue(this.rating.rating);
+/*    this.setRatingValue(this.rating.rating);*/
   }
   onClick(inputrating: number): void {
     this.inputrating = inputrating;

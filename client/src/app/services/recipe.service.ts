@@ -13,6 +13,7 @@ export class RecipeService {
   recipes: Recipe[];
   recipe: Recipe;
 
+
   constructor(private http:HttpClient, private router : Router ) {
     this.recipes = new Array<Recipe>();
     this.findAll();
@@ -24,6 +25,10 @@ export class RecipeService {
 
   saveCommentToDatabase(comment: Comment) {
     console.log(comment);
+    this.http.post('http://localhost:8080/comment/createComment', {"commentText": comment.commentText, "userName": comment.userName, "recipeId": comment.recipeId}).subscribe( data => {
+      console.log(data);
+    });
+
   }
   saveCRatingToDatabase(rating: Rating) {
     console.log(rating);
@@ -97,6 +102,21 @@ export class RecipeService {
           console.log(res);
           resolve(res);
         })
+    });
+    return promise;
+  }
+
+  public findPerRecipeTitle(title: string){
+    console.log(title);
+    let promise = new Promise((resolve, reject) => {
+      this.http.post('http://localhost:8080/recipe/getRecipeListFromSearchString?searchString=', title).subscribe(data => {
+        let inRecipes = data as Array<Object>;
+        this.recipes = new Array<Recipe>();
+        for (var i = 0; i < inRecipes.length; i++) {
+          this.recipes.push(data[i]);
+        }
+        resolve(this.recipes);
+      });
     });
     return promise;
   }
