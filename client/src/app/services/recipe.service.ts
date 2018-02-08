@@ -33,9 +33,6 @@ export class RecipeService {
     console.log(rating);
   }
 
-  saveRecipeToDatabase(recipe: Recipe) {
-    this.createRecipe(recipe);
-  }
 
   getRecipe(recipeId: number) {
     let promise = new Promise((resolve, reject) => {
@@ -52,12 +49,12 @@ export class RecipeService {
     return promise;
   }
 
-  public createRecipe(recipe: Recipe)
-  {
-    this.http.post('http://localhost:8080/recipe/create', recipe).subscribe(data => {
+  public createRecipe(recipe: Recipe) {
+   return this.http.post('http://localhost:8080/recipe/create', recipe)
+    /*.subscribe(data => {
       console.log(data);
     });
-    console.log(recipe);
+    console.log(recipe);*/
   }
 
   public updateRecipe(recipe: Recipe)

@@ -13,7 +13,7 @@
 
       <app-rating style="display: inline-block" class="col-md" [recipe]="recipe"></app-rating>
 
-      <div  class="col-sm" style="display: inline-block">
+      <div *ngIf="hasEditRights" class="col-sm" style="display: inline-block">
         <a  routerLink="/recipe/edit/{{recipe?.recipeId}}"><span  class="glyphicon glyphicon-edit"></span></a>
       </div>
 

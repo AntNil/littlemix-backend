@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/user.modal";
 import {UserService} from "../../services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,9 @@ export class RegisterComponent implements OnInit {
   user: User;
 
 
-  constructor(private userService: UserService) {
+
+  constructor(private userService: UserService,
+              private router: Router) {
     this.user = new User();
   }
 
@@ -20,7 +23,11 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    this.userService.saveUserToDatabase(this.user);
+    this.userService.saveUserToDatabase(this.user).subscribe(data =>{
+      this.router.navigate(['/home']);
+    }, ()=>{
+      console.log("Error, user not registered");
+    })
   }
 
 

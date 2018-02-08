@@ -17,7 +17,8 @@ export class AddRecipeComponent implements OnInit {
   ingredients: Ingredient;
   userId: number;
 
-  constructor(private recipeService: RecipeService) {
+  constructor(private recipeService: RecipeService,
+              private router: Router) {
     this.recipe = new Recipe();
     this.categories = new Array();
     this.ingredients = new Ingredient();
@@ -40,9 +41,13 @@ export class AddRecipeComponent implements OnInit {
 
 
   addRecipe() {
-    this.recipeService.saveRecipeToDatabase(this.recipe);
-    console.log(this.recipe);
-/*    this.router.navigate(["/home"]);*/
+    this.recipeService.createRecipe(this.recipe).subscribe( data =>{
+      this.router.navigate(["/home"]);
+    },()=>{
+      console.log("You didn't save your recipe");
+    })
+
+
   }
 
   onSelect(value) {

@@ -1,12 +1,12 @@
 <div class="container">
   <div class="col-lg-10 col-lg-offset-1">
     <h1>Add Recipe</h1>
-    <form>
+    <form (ngSubmit)="f.valid && addRecipe()" #f="ngForm" novalidate>
       <div class="row">
         <div class="col-lg-12">
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" id="title" [(ngModel)]="recipe.recipeTitle" name="title" class="form-control">
+            <input type="text" id="title" [(ngModel)]="recipe.recipeTitle" required name="title" class="form-control">
           </div>
         </div>
       </div>
@@ -14,7 +14,7 @@
         <div class="col-lg-12">
           <div class="form-group">
             <label for="description">Description</label>
-            <textarea rows="4" type="text" id="description" [(ngModel)]="recipe.description" name="description"
+            <textarea rows="4" type="text" id="description" [(ngModel)]="recipe.description" required name="description"
                       class="form-control"></textarea>
           </div>
         </div>
@@ -24,8 +24,7 @@
         <div class="col-lg-12">
           <div class="form-group">
             <label for="category">Category</label>
-            <select (change)="onSelect($event.target.value)" class="form-control" id="category">
-              <option hidden>Please select a category</option>
+            <select (change)="onSelect($event.target.value)" required class="form-control" id="category">
               <option *ngFor="let cat of categories">{{cat}}</option>
             </select>
           </div>
@@ -36,7 +35,7 @@
         <div class="col-lg-12">
           <div class="form-group">
             <label for="instuctions">Instuctions</label>
-            <textarea rows="4" type="text" id="instuctions" [(ngModel)]="recipe.recipeText" name="instuctions"
+            <textarea rows="4" type="text" id="instuctions" [(ngModel)]="recipe.recipeText" required name="instuctions"
                       class="form-control"></textarea>
           </div>
         </div>
@@ -45,7 +44,7 @@
         <div class="col-lg-12">
           <div class="form-group">
             <label for="picture">Image</label>
-            <input type="text" placeholder="Add URL..." id="picture" [(ngModel)]="recipe.imgURL" name="picture"
+            <input type="text" placeholder="Add URL..." id="picture" [(ngModel)]="recipe.imgURL" required name="picture"
                    class="form-control">
           </div>
         </div>
@@ -62,7 +61,7 @@
         <div class="col-lg-3">
           <div class="form-group">
             <label for="amount">Amount</label>
-            <input type="text" id="amount" [(ngModel)]="ingredients.amount" name="amount" class="form-control">
+            <input type="text" id="amount" [(ngModel)]="ingredients.amount" class="form-control" name="amount">
           </div>
         </div>
         <div class="col-lg-1">
@@ -71,12 +70,12 @@
       </div>
 
 
-      <ul class="list-group">
+      <ul class="list-group" >
         <li *ngFor="let ing of recipe.ingredientsList" class="list-group-item"> {{ing.ingredientName}} ({{ing.amount}})</li>
       </ul>
       <div class="row">
         <div class="col-lg-12">
-          <button type="button" class="btn btn-success pull-left add-recipe-button" (click)="addRecipe()">Add Recipe
+          <button type="submit" class="btn btn-success pull-left add-recipe-button" [disabled]="!f.valid"> Add Recipe
           </button>
         </div>
       </div>

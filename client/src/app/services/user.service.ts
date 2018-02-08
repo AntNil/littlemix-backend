@@ -15,9 +15,7 @@ export class UserService {
   }
 
   saveUserToDatabase(user: User) {
-    this.http.post('http://localhost:8080/user/create', user).subscribe(data => {
-      console.log(data);
-    });
+    return this.http.post('http://localhost:8080/user/create', user);
   }
 
   loginWithUser(user: User): any {
