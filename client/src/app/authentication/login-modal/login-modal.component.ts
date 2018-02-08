@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/user.modal";
 import {Router} from "@angular/router";
+import {NavbarComponent} from "../../navbar/navbar.component";
 
 declare let $: any;
 
@@ -15,7 +16,9 @@ export class LoginModalComponent implements OnInit {
   user: User;
   errorText: string;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService,
+              private router: Router,
+              private navbarComponent: NavbarComponent) {
     this.user = new User();
   }
 
@@ -33,9 +36,13 @@ export class LoginModalComponent implements OnInit {
     },
       ()=>{
         this.errorText = "Wrong email or password!";
+      }, ()=>{
+        this.navbarComponent.setCurrentUser();
+        this.user = new User();
       });
 
-    this.user = new User();
+
+
 
 
   }

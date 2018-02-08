@@ -22,15 +22,6 @@ export class UserService {
 
   loginWithUser(user: User): any {
    return this.http.post('http://localhost:8080/user/checkLoginDetailsForUser/', user);
-    /*  this.user = data as User;
-      localStorage.setItem('currentUser', JSON.stringify(this.user));
-      this.router.navigate(['/home']);
-      return data;
-    },()=>{
-      return data;
-    }, ()=>{
-
-    })*/
 
   }
 
