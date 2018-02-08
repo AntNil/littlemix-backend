@@ -38,6 +38,7 @@ public class UserController {
 			return new ResponseEntity<UserEntity>(HttpStatus.NOT_FOUND);
 		}
 	}
+
 	
 	@GetMapping(path="/getUser")
 	public ResponseEntity<UserEntity> getUser(int userId){
