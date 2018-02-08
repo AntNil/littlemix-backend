@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/grade")
+@CrossOrigin
 public class GradeController {
 
     @Autowired
@@ -38,7 +39,7 @@ public class GradeController {
     }
 
     @PostMapping("/createGrade")
-    public ResponseEntity createAGrade(@RequestBody GradeEntity gradeObject){
+    public ResponseEntity createAGrade(@RequestBody GradeEntity gradeObject) {
     	RecipeEntity recipe = recipeRepository.findOne(gradeObject.getRecipeId());
     	recipe.getGradeList().add(gradeObject);
     	recipeRepository.save(recipe);
