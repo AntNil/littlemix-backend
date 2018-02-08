@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Ingredient} from "../models/ingredient.modal";
 import {RecipeService} from "../services/recipe.service";
 import {Recipe} from "../models/recipe.modal";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-edit-recipe',
@@ -16,14 +16,14 @@ export class EditRecipeComponent implements OnInit {
   categories: string [];
   ingredients: Ingredient;
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService) {
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private router: Router) {
 
     this.route.params.subscribe(params => {
       this.recipeId = params['recipeId'];
     });
     this.categories = new Array();
     this.ingredients = new Ingredient();
-    this.recipe = this.recipeService.getRecipe(this.recipeId);
+    this.recipe = this.recipeService.recipe;
   }
 
   ngOnInit() {
@@ -49,9 +49,15 @@ export class EditRecipeComponent implements OnInit {
 
   removeRecipe() {
     this.recipeService.removeRecipe(this.recipe);
+    this.goToStartPage();
   }
 
   updateRecipe() {
     this.recipeService.updateRecipe(this.recipe);
+    this.goToStartPage();
+  }
+
+  goToStartPage() {
+    this.router.navigate(['/home']);
   }
 }
