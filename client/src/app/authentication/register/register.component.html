@@ -1,7 +1,7 @@
 <div class="container">
   <div class="col-lg-10 col-lg-offset-1">
   <h1>Registration</h1>
-  <form (ngSubmit)="f.valid && register()" #f="ngForm" novalidate>
+  <form (ngSubmit)="f.valid && registerUser()" #f="ngForm" novalidate>
     <div class="form-group">
       <label for="firstName">Firstname</label>
       <input type="text" id="firstName" [(ngModel)]="user.firstName" name="firstName" minlength="2" required ngModel="#firstName" class="form-control" >

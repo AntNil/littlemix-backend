@@ -41,10 +41,14 @@ export class AddRecipeComponent implements OnInit {
 
 
   addRecipe() {
-    this.recipeService.createRecipe(this.recipe).subscribe( data =>{
-      this.router.navigate(["/home"]);
+    this.recipeService.createRecipe(this.recipe).subscribe( () =>{
+      this.recipeService.findAll().then(res => {
+        this.router.navigate(["/home"]);
+      });
     },()=>{
       console.log("You didn't save your recipe");
+    },()=>{
+
     })
 
 

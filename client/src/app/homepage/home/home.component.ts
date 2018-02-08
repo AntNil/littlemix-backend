@@ -18,6 +18,6 @@ export class HomeComponent implements OnInit {
   }
 
   private getRecipes(): void {
-    this.recipes = this.recipeService.recipes;
+    this.recipes = this.recipeService.getRecipes();
   }
 }

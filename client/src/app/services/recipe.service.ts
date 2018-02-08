@@ -92,12 +92,14 @@ export class RecipeService {
 
   public findAll()
   {
+    this.recipes.length = 0;
     let promise = new Promise((resolve, reject) => {
       this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
         let inRecipes = data as Array<Object>;
         for (var i = 0; i < inRecipes.length; i++) {
           var recipe = data[i];
           this.recipes.push(recipe);
+          resolve();
         }
       });
     });
