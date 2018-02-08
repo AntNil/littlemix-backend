@@ -34,12 +34,12 @@
 
         <div class="form-group ">
           <label for="nam">Name</label>
-          <input #nameInput type="text" class="form-control" id="nam" required [(ngModel)]="comment.userName"  name="name">
+          <textarea #nameInput type="text" class="form-control" id="nam" required value="comment.userName"  name="name"></textarea>
         </div>
 
         <div class="form-group">
           <label for="comment">Comment</label>
-          <textarea #commentInput class="form-control" id="comment" rows="3" required [(ngModel)]="comment.commentText" name="comment"></textarea>
+          <textarea #commentInput class="form-control" id="comment" rows="3" required value="comment.commentText" name="comment"></textarea>
         </div>
         <button   (click)="registerComment(nameInput.value, commentInput.value )" type="button" class="btn btn-primary btn-sm">Submit</button>
 

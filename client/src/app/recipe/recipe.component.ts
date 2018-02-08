@@ -50,6 +50,7 @@ export class RecipeComponent implements OnInit {
 
     this.recipeService.saveCommentToDatabase(this.comment);
     this.recipe.commentList.push(this.comment);
+    window.location.reload();
   }
 }
 
