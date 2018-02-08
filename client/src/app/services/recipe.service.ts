@@ -63,15 +63,29 @@ export class RecipeService {
 
   public findAll()
   {
-    this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
+    let promise = new Promise((resolve, reject) => {
+      this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
         let inRecipes = data as Array<Object>;
-        let outRecipes = new Array<Recipe>();
-        for(var i = 0; i < inRecipes.length; i++)
-        {
+        for (var i = 0; i < inRecipes.length; i++) {
           var recipe = data[i];
           this.recipes.push(recipe);
         }
+      });
     });
+    return promise;
+  }
+
+  public getAllToArray(inputRecipes: Recipe[])
+  {
+    let promise = new Promise((resolve, reject) => {
+      this.http.get('http://localhost:8080/recipe/getAllRecipes').subscribe(data => {
+        let inRecipes = data as Array<Object>;
+        for (var i = 0; i < inRecipes.length; i++) {
+          inputRecipes.push(data[i] as Recipe);
+        }
+      });
+    });
+    return promise;
   }
 
   public findPerCategory(category: string)

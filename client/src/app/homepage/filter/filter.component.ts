@@ -31,6 +31,15 @@ export class FilterComponent implements OnInit {
   }
 
   select(value){
-    this.recipeService.findPerCategory(value).then(res => console.log(res));
+    this.recipes.length = 0;
+    if(value == "All categories")
+    {
+      this.recipeService.getAllToArray(this.recipes);
+    } else {
+      this.recipeService.findPerCategory(value).then(res => {
+        var tempRecipes = res as Array<Recipe>;
+        tempRecipes.forEach(recipe => this.recipes.push(recipe));
+      });
+    }
   }
 }
