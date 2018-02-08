@@ -10,48 +10,36 @@ import {RecipeService} from "../services/recipe.service";
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.css']
 })
+
 export class RatingComponent implements OnInit {
   @Input() inputrating: number;
-
+  @Input() finalGrade: number;
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
-  rating: Rating;
   @Input() recipe: Recipe;
+  rating: Rating;
 
 
 
   constructor(private recipeService: RecipeService) {
-
-
-    //.rating = this.recipe.rating;
-    //this.setRatingValue(4);
-
-
   }
 
   ngOnInit() {
-    //this.rating = this.recipe.rating;
-/*    console.log(this.recipe);
-    this.rating = this.recipe.gradeList;*/
-/*    this.setRatingValue(this.rating.rating);*/
+    window.setTimeout(() => {this.emitNumber();}, 1000);
   }
+
+  emitNumber() {
+    console.log(this.inputrating);
+    this.ratingClick.emit({
+      inputrating: this.inputrating
+    });
+  }
+
   onClick(inputrating: number): void {
     this.inputrating = inputrating;
     this.ratingClick.emit({
       inputrating: inputrating
     });
-    this.recipeService.saveCRatingToDatabase(this.rating);
-  }
-
-  public setRatingValue(inputrating: number){
-    console.log(inputrating);
-    this.inputrating = inputrating;
-    this.ratingClick.emit({
-      inputrating: inputrating
-    })
-
-  }
-  public getRating(recipeId: number): void {
-/*    this.rating = this.recipeService.recipes[recipeId].gradeList;*/
+    this.recipeService.saveCRatingToDatabase(inputrating, this.recipe.recipeId);
   }
 
 }

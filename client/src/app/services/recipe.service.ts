@@ -30,8 +30,22 @@ export class RecipeService {
     });
 
   }
-  saveCRatingToDatabase(rating: Rating) {
-    console.log(rating);
+  saveCRatingToDatabase(rating: number, recipeId: number) {
+    this.http.post('http://localhost:8080/grade/createGrade', {"gradePoints": rating, "recipeId": recipeId}).subscribe( data => {
+      console.log(data);
+    });
+  }
+
+  getGrade(recipeId: number) {
+    let promise = new Promise((resolve, reject) => {
+      this.http.get('http://localhost:8080/grade/getGrade?recipeId=' + recipeId)
+        .toPromise()
+        .then(res => {
+          console.log(res);
+          resolve(res);
+        })
+    });
+    return promise;
   }
 
   saveRecipeToDatabase(recipe: Recipe) {

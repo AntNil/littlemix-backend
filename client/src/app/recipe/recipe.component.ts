@@ -13,8 +13,11 @@ import {ActivatedRoute} from "@angular/router";
 
 export class RecipeComponent implements OnInit {
   @Input() comment: Comment;
+  @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
   @Output() recipeId: number;
   recipe: Recipe;
+  inputRating: number;
+  finalGrade: number;
 
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService) {
@@ -22,12 +25,17 @@ export class RecipeComponent implements OnInit {
       this.recipeId = params['recipeId'];
     });
     this.comment = new Comment();
+    this.finalGrade = 0;
 
   }
 
   ngOnInit() {
     this.recipeService.getRecipe(this.recipeId).then(res => {
       this.recipe = res as Recipe;
+    }).catch(Error);
+    this.recipeService.getGrade(this.recipeId).then(res => {
+      this.finalGrade = parseFloat(res as string);
+      this.inputRating = Math.round(this.finalGrade);
     }).catch(Error);
   }
 
