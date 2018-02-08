@@ -31,8 +31,6 @@ public class RecipeController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	int currentRecipeId;
-	
 	@PostMapping(path="/create")
 	public ResponseEntity createRecipe(@RequestBody RecipeEntity recipeModel) {	
 		UserEntity user = userRepository.findOne(recipeModel.getUserId());
@@ -79,6 +77,9 @@ public class RecipeController {
 	@DeleteMapping(path="/delete")
 	public ResponseEntity deleteRecipe(@RequestParam int recipeId){
 		RecipeEntity r = recipeRepository.findOne(recipeId);
+		if(r == null){
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
 		recipeRepository.delete(r);
 		return new ResponseEntity(HttpStatus.OK);
 	}
@@ -109,6 +110,9 @@ public class RecipeController {
 	@PostMapping(path="/addFavorite")
 	public ResponseEntity addFavorite(@RequestParam int userId, @RequestParam int recipeId){
 		UserEntity user = userRepository.findOne(userId);
+		if(user == null){
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
 		RecipeEntity recipe = recipeRepository.findOne(recipeId);
 		user.getFavoriteRecipeList().add(recipe);
 		userRepository.save(user);
@@ -119,9 +123,17 @@ public class RecipeController {
 	@DeleteMapping(path="/deleteFavorite")
 	public ResponseEntity deleteFavorite(@RequestParam int userId, @RequestParam int recipeId){
 		UserEntity user = userRepository.findOne(userId);
-		int i;
+		if(user == null){
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
+		int i = 0;
 		for( RecipeEntity recipe : user.getFavoriteRecipeList()){
-			
+			i++;
+			if(recipe.getRecipeId() == recipeId){
+				break;
+			}
+			user.getFavoriteRecipeList().remove(i);
+			userRepository.save(user);
 		}
 		return new ResponseEntity(HttpStatus.OK);
 	}
