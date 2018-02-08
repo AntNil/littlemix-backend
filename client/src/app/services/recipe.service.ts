@@ -13,6 +13,7 @@ export class RecipeService {
   recipes: Recipe[];
   recipe: Recipe;
 
+
   constructor(private http:HttpClient, private router : Router ) {
     this.recipes = new Array<Recipe>();
     this.findAll();
@@ -23,7 +24,10 @@ export class RecipeService {
   }
 
   saveCommentToDatabase(comment: Comment) {
-    console.log(comment);
+    this.http.post('http://localhost:8080/recipe/createComment', {"comment": Comment}).subscribe( data => {
+      console.log(data);
+    });
+
   }
   saveCRatingToDatabase(rating: Rating) {
     console.log(rating);
@@ -81,6 +85,18 @@ export class RecipeService {
   public findPerCategory(category: string) : Recipe[]
   {
     this.http.post('http://localhost:8080/recipe/getByCategory', {"category": category}).subscribe( data => {
+      let inRecipes = data as Array<Object>;
+      this.recipes = new Array<Recipe>();
+      for(var i = 0; i < inRecipes.length; i++)
+      {
+        this.recipes.push(data[i]);
+      }
+    });
+    return this.recipes;
+  }
+
+  public findPerRecipeTitle(title: string){
+    this.http.post('http://localhost:8080/recipe/getRecipeListFromSearchString', {"title": title}).subscribe( data => {
       let inRecipes = data as Array<Object>;
       this.recipes = new Array<Recipe>();
       for(var i = 0; i < inRecipes.length; i++)
