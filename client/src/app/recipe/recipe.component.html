@@ -11,16 +11,15 @@
       </div>
 
 
-      <app-rating style="display: inline-block" class="col-md" [recipe]="recipe"></app-rating>
+      <app-rating style="display: inline-block" class="col-md" [recipe]="recipe" [finalGrade]="finalGrade"></app-rating>
 
       <div *ngIf="hasEditRights" class="col-sm" style="display: inline-block">
+      <br style="clear: both">
+      <div  class="col-sm" style="display: inline-block">
+
         <a  routerLink="/recipe/edit/{{recipe?.recipeId}}"><span  class="glyphicon glyphicon-edit"></span></a>
       </div>
 
-      <div class="col-sm" style="display: inline-block">
-      <a routerLink="/recipe/edit/{{recipe?.recipeId}}"><span class="glyphicon glyphicon-heart"></span></a>
-
-      </div>
 
 
       <p class="description">{{recipe?.description}}</p>
@@ -46,7 +45,7 @@
       </form>
       <label>User Comment</label>
       <ul class="ingredient list-group list-group-flush">
-        <li *ngFor="let com of  recipe?.commentList" class="list-group-item">{{com?.name}} : {{com?.comment}}</li>
+        <li *ngFor="let com of  recipe?.commentList" class="list-group-item">{{com.userName}} : {{com.commentText}}</li>
       </ul>
     </div>
   </div>

@@ -12,6 +12,8 @@ export class RecipeService {
 
   recipes: Recipe[];
   recipe: Recipe;
+  grade: number;
+  finalGrade: number;
 
 
   constructor(private http:HttpClient, private router : Router ) {
@@ -24,13 +26,39 @@ export class RecipeService {
   }
 
   saveCommentToDatabase(comment: Comment) {
-    this.http.post('http://localhost:8080/recipe/createComment', {"comment": Comment}).subscribe( data => {
+    console.log(comment);
+    this.http.post('http://localhost:8080/comment/createComment', {"commentText": comment.commentText, "userName": comment.userName, "recipeId": comment.recipeId}).subscribe( data => {
       console.log(data);
     });
 
   }
-  saveCRatingToDatabase(rating: Rating) {
-    console.log(rating);
+  saveCRatingToDatabase(rating: number, recipeId: number) {
+    this.http.post('http://localhost:8080/grade/createGrade', {"gradePoints": rating, "recipeId": recipeId}).subscribe( data => {
+      console.log(data);
+    });
+  }
+
+  fetchGrades(recipeId: number) {
+    let promise = new Promise((resolve, reject) => {
+      this.http.get('http://localhost:8080/grade/getGrade?recipeId=' + recipeId)
+        .toPromise()
+        .then(res => {
+          /*console.log(res);
+          resolve(res);*/
+          this.finalGrade = parseFloat(res as string);
+          this.grade = Math.round(this.finalGrade);
+          resolve({"finalGrade": this.finalGrade, "grade": this.grade});
+        })
+    });
+    return promise;
+  }
+
+  getGrade() : number {
+    return this.grade;
+  }
+
+  getFinalGrade() : number {
+    return this.finalGrade;
   }
 
 
@@ -103,15 +131,17 @@ export class RecipeService {
   }
 
   public findPerRecipeTitle(title: string){
-    this.http.post('http://localhost:8080/recipe/getRecipeListFromSearchString', {"title": title}).subscribe( data => {
-      let inRecipes = data as Array<Object>;
-      this.recipes = new Array<Recipe>();
-      for(var i = 0; i < inRecipes.length; i++)
-      {
-        this.recipes.push(data[i]);
-      }
+    let promise = new Promise((resolve, reject) => {
+      this.http.post('http://localhost:8080/recipe/getRecipeListFromSearchString?searchString=', title).subscribe(data => {
+        let inRecipes = data as Array<Object>;
+        this.recipes = new Array<Recipe>();
+        for (var i = 0; i < inRecipes.length; i++) {
+          this.recipes.push(data[i]);
+        }
+        resolve(this.recipes);
+      });
     });
-    return this.recipes;
+    return promise;
   }
 
   removeRecipe(recipe: Recipe) {

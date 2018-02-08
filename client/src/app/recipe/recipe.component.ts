@@ -15,6 +15,7 @@ import {UserService} from "../services/user.service";
 
 export class RecipeComponent implements OnInit {
   @Input() comment: Comment;
+  @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
   @Output() recipeId: number;
   recipe: Recipe;
   currentUser: User;
@@ -26,7 +27,6 @@ export class RecipeComponent implements OnInit {
       this.recipeId = params['recipeId'];
     });
     this.comment = new Comment();
-
   }
 
   ngOnInit() {
@@ -43,10 +43,12 @@ export class RecipeComponent implements OnInit {
   }
 
   registerComment(name: string, comment: string) {
-    console.log(this.comment);
-    // this.recipeService.saveCommentToDatabase(this.comment);
+    this.comment.recipeId = this.recipe.recipeId;
+    this.comment.userName = name;
+    this.comment.commentText = comment;
 
-    this.recipe.commentList.push({name, comment});
+    this.recipeService.saveCommentToDatabase(this.comment);
+    this.recipe.commentList.push(this.comment);
   }
 }
 
