@@ -49,12 +49,20 @@ export class EditRecipeComponent implements OnInit {
 
   removeRecipe() {
     this.recipeService.removeRecipe(this.recipe);
-    this.goToStartPage();
+    window.setTimeout(() => {
+      this.recipeService.findAll().then(res => {
+        this.goToStartPage()
+      });
+    }, 300);
   }
 
   updateRecipe() {
     this.recipeService.updateRecipe(this.recipe);
-    this.goToStartPage();
+    window.setTimeout(() => {
+      this.recipeService.findAll().then(res => {
+        this.goToStartPage()
+      });
+    }, 300);
   }
 
   goToStartPage() {
