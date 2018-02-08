@@ -24,9 +24,9 @@
         <div class="col-lg-12">
           <div class="form-group">
             <label for="category">Category</label>
-            <select class="form-control" id="category">
+            <select (change)="onSelect($event.target.value)" class="form-control" id="category">
               <option selected>{{recipe.category}}</option>
-              <option *ngFor="let cat of categories">{{cat}}</option>
+              <option *ngFor="let cat of categories" [ngValue]="cat">{{cat}}</option>
             </select>
           </div>
         </div>

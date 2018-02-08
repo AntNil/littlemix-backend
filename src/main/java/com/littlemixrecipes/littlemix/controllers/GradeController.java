@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/grade")
 @CrossOrigin
+@RequestMapping("/grade")
 public class GradeController {
 
     @Autowired
