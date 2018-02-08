@@ -27,7 +27,22 @@ export class FilterComponent implements OnInit {
   }
 
   searchButtonPressed(value) {
-  this.recipeService.findPerRecipeTitle(value);
+    this.recipes.length = 0;
+    if(!value){
+      this.recipeService.findPerRecipeTitle("getAll").then(res => {
+        var tempRecipes = res as Array<Recipe>;
+        tempRecipes.forEach(recipe => this.recipes.push(recipe));
+      });
+
+
+    }
+    else {
+
+      this.recipeService.findPerRecipeTitle(value).then(res => {
+        var tempRecipes = res as Array<Recipe>;
+        tempRecipes.forEach(recipe => this.recipes.push(recipe));
+      });
+    }
   }
 
   select(value){
