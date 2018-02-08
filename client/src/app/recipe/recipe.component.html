@@ -24,10 +24,12 @@
 
 
       <p class="description">{{recipe?.description}}</p>
+      <label>Ingredient</label>
       <ul class="ingredient list-group list-group-flush">
         <li *ngFor="let ing of recipe?.ingredientsList" class="list-group-item">{{ing.ingredientName}} : {{ing.amount}}</li>
       </ul>
 
+      <label>Description</label>
       <p class="description">{{recipe?.recipeText}}</p>
 
       <form  class="commentBox">
