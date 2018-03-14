@@ -1,7 +1,5 @@
 package com.littlemixrecipes.littlemix.controllers;
 
-/*Created by jennifergisslow on 2018-02-04.*/
-
 import com.littlemixrecipes.littlemix.entities.GradeEntity;
 import com.littlemixrecipes.littlemix.entities.RecipeEntity;
 import com.littlemixrecipes.littlemix.services.GradeRepository;
